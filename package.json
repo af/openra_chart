@@ -1,0 +1,16 @@
+{
+  "name": "ra_chart",
+  "version": "0.0.0",
+  "description": "Charting OpenRA units",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aaron Franks (http://aaronfranks.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "d3": "^3.4.3",
+    "yamljs": "*",
+    "browserify": "^3.32.1"
+  }
+}
