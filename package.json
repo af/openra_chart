@@ -4,7 +4,8 @@
   "description": "Charting OpenRA units",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build_js": "browserify js/main.js > _build/main.js",
+    "build_css": "stylus css -o _build"
   },
   "author": "Aaron Franks (http://aaronfranks.com/)",
   "license": "MIT",

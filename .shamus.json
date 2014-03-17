@@ -1,0 +1,34 @@
+{
+    "window": {
+        "alwaysOnTop": true,
+        "width": 300,
+        "top": 0,
+        "right": 0
+    },
+
+    "watcher": {
+        "paths": ["."]
+    },
+
+    "tasks": [
+        {
+            "name": "Browserify",
+            "command": "npm run build_js",
+            "parser": "exitcode",
+            "fileMatcher": "\\.js$"
+        },
+        {
+            "name": "JSHint",
+            "command": "jshint js",
+            "parser": "exitcode",
+            "fileMatcher": "js/\\.js$"
+        },
+        {
+            "name": "Stylus",
+            "command": "npm run build_css",
+            "parser": "exitcode",
+            "fileMatcher": "\\.styl$"
+        }
+    ]
+}
+
