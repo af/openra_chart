@@ -23,5 +23,30 @@ filenames.forEach(function(f) {
     }
 });
 
-fs.writeFileSync('units.json', JSON.stringify(contents, null, 2));
-console.log('---\nWrote units.json');
+// Convert nested objects into a flat array of units
+function massageData(units) {
+    var types = Object.keys(units);
+    var arrays = types.map(function(t) {
+        var validUnits = [];
+        var unitKeys = Object.keys(units[t]);
+        unitKeys.forEach(function(name) {
+            var obj = units[t][name];
+            obj.unitClass = t;
+            obj.name = name;
+            console.log(obj.Buildable && obj.Buildable.Owner)
+            if (obj.Buildable && obj.Valued && obj.Valued.Cost) validUnits.push(obj);
+        });
+        return validUnits;
+    });
+
+    // Flatten into a single array:
+    return [].concat.apply([], arrays);
+}
+
+// fs.writeFileSync('units.json', JSON.stringify(contents, null, 2));
+// console.log('---\nWrote units.json');
+
+// Temporary hack to dump json data to a global var:
+var units = massageData(contents);
+var globalAssign = 'units=';
+fs.writeFileSync('units.js', globalAssign + JSON.stringify(units, null, 2));
