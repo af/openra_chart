@@ -18,11 +18,10 @@ var yAxisEl = svg.append('g').attr('class', 'axis')
 
 
 function renderChart(data, yFn) {
-    var xValueFn = function(d) { return xScale(d.Valued.Cost) };
-    var yValueFn = function(d, i) { return yScale(yFn(d,i)); };
+    var xFn = function(d) { return (d.Valued.Cost) };
 
     // Set up x/y scales and axes for the given data:
-    xScale.domain([0, d3.max(data, xValueFn)])
+    xScale.domain([0, d3.max(data, xFn)])
           .range([margin.left, width - margin.left - margin.right]);
     xAxis.scale(xScale).orient('bottom');
     xAxisEl.call(xAxis);
@@ -32,24 +31,41 @@ function renderChart(data, yFn) {
     yAxis.scale(yScale).orient('left');
     yAxisEl.call(yAxis);
 
-    var enter = svg.selectAll('g.unit')
-                    .data(data)
-                    .enter();
-    var groups = enter.append('g').attr('class', 'unit');
+    var xValueFn = function(d, i) { return xScale(xFn(d,i)); };
+    var yValueFn = function(d, i) { return yScale(yFn(d,i)); };
+    var groups = svg.selectAll('g.unit').data(data);
+    var isUpdate = !svg.selectAll('circle').empty();
 
-    groups.append('circle')
-        .attr('cx', xValueFn)
-        .attr('cy', yValueFn)
-        .attr('r', 5)
-        .attr('class', function(d) {
-            var owner = (d.Buildable || {}).Owner;
-            return owner.replace(',', '_');     // 'allies,soviet' case
+    if (isUpdate) {
+        setAttrs({
+            circles: groups.select('circle'),
+            text: groups.select('text')
         });
+    } else {
+        groups = groups.enter().append('g').attr('class', 'unit');
+        setAttrs({
+            circles: groups.append('circle'),
+            text: groups.append('text')
+        });
+    }
 
-    groups.append('text')
-        .attr('x', xValueFn)
-        .attr('y', yValueFn)
-        .text(function(d) { return (d.Tooltip || {}).Name });
+    function setAttrs(config) {
+        config.circles
+            .attr('class', function(d) {
+                var owner = (d.Buildable || {}).Owner;
+                return owner.replace(',', '_');     // 'allies,soviet' case
+            })
+            .transition().duration(1000)
+            .attr('cx', xValueFn)
+            .attr('cy', yValueFn)
+            .attr('r', 6);
+
+        config.text
+            .text(function(d) { return (d.Tooltip || {}).Name })
+            .transition().duration(1000)
+            .attr('x', xValueFn)
+            .attr('y', yValueFn);
+    }
 }
 
 window.a = function() {
@@ -58,4 +74,4 @@ window.a = function() {
 window.b = function() {
     renderChart(window.units, function(d) { return ((d.RevealsShroud || {}).Range) || null });
 };
-window.r = renderChart;
+window.a();
