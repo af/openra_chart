@@ -68,10 +68,16 @@ function renderChart(data, yFn) {
     }
 }
 
-window.a = function() {
-    renderChart(window.units, function(d) { return (d.Health.HP) });
+var yAxisTypes = {
+    'Health Points': function(d) { return d.Health.HP },
+    'Speed': function(d) { return (d.Mobile || {}).Speed },
+    'Vision': function(d) { return (d.RevealsShroud || {}).Range || null }
 };
-window.b = function() {
-    renderChart(window.units, function(d) { return ((d.RevealsShroud || {}).Range) || null });
-};
-window.a();
+
+// Wire up the select box to support choosing different chart types:
+d3.select('select[name=chart_type]')
+    .on('change', function() {
+        var chartType = this.value;
+        renderChart(window.units, yAxisTypes[chartType]);
+    });
+renderChart(window.units, yAxisTypes['Health Points']);
