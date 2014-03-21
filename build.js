@@ -30,11 +30,12 @@ function massageData(units) {
         var validUnits = [];
         var unitKeys = Object.keys(units[t]);
         unitKeys.forEach(function(name) {
-            var obj = units[t][name];
-            obj.unitClass = t;
-            obj.name = name;
-            console.log(obj.Buildable && obj.Buildable.Owner)
-            if (obj.Buildable && obj.Valued && obj.Valued.Cost) validUnits.push(obj);
+            var unit = units[t][name];
+            unit.unitClass = t;
+            unit.name = name;
+            var isValidUnit = unit.Valued && unit.Valued.Cost && unit.Buildable;
+            var addUnit = isValidUnit && unit.Buildable.Prerequisites !== 'bio';
+            if (addUnit) validUnits.push(unit);
         });
         return validUnits;
     });
