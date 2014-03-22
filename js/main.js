@@ -70,7 +70,7 @@ function renderChart(data, yFn) {
 
 var yAxisTypes = {
     'Health Points': function(d) { return d.Health.HP },
-    'Speed': function(d) { return (d.Mobile || {}).Speed },
+    'Speed': function(d) { return (d.Plane || d.Helicopter || d.Mobile || {}).Speed },
     'Vision': function(d) { return (d.RevealsShroud || {}).Range || null }
 };
 
