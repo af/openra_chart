@@ -1,10 +1,16 @@
 // Convert OpenRA's YAML-ish unit files to json
+// Requires 2 CLI args: the path to the RA mod rules dir, and the name of
+// the OpenRA release that we're scraping.
+//
+// Example Usage:
+// node build.js ../openra/mods/ra/rules release-xxxxxx
 
 var fs = require('fs');
 var path = require('path');
 var yaml = require('yamljs');
 
-var YAML_DIR = '../openra/mods/ra/rules';
+var RELEASE_NAME = process.argv.pop();
+var YAML_DIR = process.argv.pop();
 var filesToCheck = ['vehicles', 'aircraft', 'infantry', 'ships'];
 
 var filenames = fs.readdirSync(YAML_DIR);
@@ -44,10 +50,8 @@ function massageData(units) {
     return [].concat.apply([], arrays);
 }
 
-// fs.writeFileSync('units.json', JSON.stringify(contents, null, 2));
-// console.log('---\nWrote units.json');
-
-// Temporary hack to dump json data to a global var:
+// hack to dump json data to a global var:
 var units = massageData(contents);
-var globalAssign = 'units=';
-fs.writeFileSync('units.js', globalAssign + JSON.stringify(units, null, 2));
+var fileName = 'js/data/' + RELEASE_NAME + '.js';
+var globalAssign = 'units=(window.units||{}); units["' + RELEASE_NAME + '"]=';
+fs.writeFileSync(fileName, globalAssign + JSON.stringify(units, null, 2));
