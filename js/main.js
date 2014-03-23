@@ -71,7 +71,10 @@ function renderChart(data, yFn) {
 var yAxisTypes = {
     'Health Points': function(d) { return d.Health.HP },
     'Speed': function(d) { return (d.Plane || d.Helicopter || d.Mobile || {}).Speed },
-    'Vision': function(d) { return (d.RevealsShroud || {}).Range || null }
+    'Vision': function(d) {
+        var raw = (d.RevealsShroud || {}).Range || 0;
+        return raw.toString().split('c')[0];    // Handle values of the form "5c0" (take the first number)
+    }
 };
 
 function updateChart() {
