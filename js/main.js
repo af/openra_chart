@@ -74,10 +74,27 @@ var yAxisTypes = {
     'Vision': function(d) { return (d.RevealsShroud || {}).Range || null }
 };
 
+function updateChart() {
+    var unitList = document.querySelector('[name=data_set]').value;
+    var chartType = document.querySelector('[name=chart_type]').value;
+    renderChart(window.units[unitList], yAxisTypes[chartType]);
+}
+
 // Wire up the select box to support choosing different chart types:
 d3.select('select[name=chart_type]')
-    .on('change', function() {
-        var chartType = this.value;
-        renderChart(window.units, yAxisTypes[chartType]);
-    });
-renderChart(window.units, yAxisTypes['Health Points']);
+    .on('change', updateChart)
+    .selectAll('option')
+    .data(Object.keys(yAxisTypes))
+    .enter()
+        .append('option')
+        .text(function(d) { return d });
+
+d3.select('select[name=data_set]')
+    .on('change', updateChart)
+    .selectAll('option')
+    .data(Object.keys(window.units))
+    .enter()
+        .append('option')
+        .text(function(d) { return d });
+
+updateChart();
