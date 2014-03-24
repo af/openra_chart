@@ -36,6 +36,14 @@ function renderChart(data, yFn) {
     var groups = svg.selectAll('g.unit').data(data);
     var isUpdate = !svg.selectAll('circle').empty();
 
+    var exit = groups.exit();
+    exit.selectAll('circle')
+        .transition()
+        .attr('r', 0);
+    exit.selectAll('text')
+        .transition()
+        .style('opacity', 0);
+
     if (isUpdate) {
         setAttrs({
             circles: groups.select('circle'),
@@ -63,6 +71,7 @@ function renderChart(data, yFn) {
         config.text
             .text(function(d) { return (d.Tooltip || {}).Name })
             .transition().duration(1000)
+            .style('opacity', 1)
             .attr('x', xValueFn)
             .attr('y', yValueFn);
     }
