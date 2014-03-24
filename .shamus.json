@@ -19,9 +19,9 @@
         },
         {
             "name": "JSHint",
-            "command": "jshint js",
+            "command": "jshint js/main.js build.js",
             "parser": "exitcode",
-            "fileMatcher": "js/\\.js$"
+            "fileMatcher": "js\/.+\\.js$"
         },
         {
             "name": "Stylus",
