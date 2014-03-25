@@ -5,10 +5,12 @@
     <title>OpenRA Units</title>
     <style>
         .axis path, .axis line { fill: none; stroke: black; shape-rendering: crispEdges; }
-        .allies { fill: blue }
-        .soviet { fill: red }
-        .allies_soviet { fill: #999 }
-        text { font-size:11px; font-family: sans-serif; opacity: 0.6; -webkit-transform: translate(4px, -4px)
+        .allies circle { fill: blue }
+        .soviet circle { fill: red }
+        .allies_soviet circle { fill: #999 }
+        text { font-size:11px; fill: #333; font-family: sans-serif; }
+        g.unit text { -webkit-transform: translate(5px, -5px) }
+        circle.range { opacity: 0.4; }
     </style>
 </head>
 <body>

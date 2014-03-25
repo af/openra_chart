@@ -44,31 +44,36 @@ function renderChart(data, yFn) {
         .transition()
         .style('opacity', 0);
 
-    if (isUpdate) {
-        setAttrs({
-            circles: groups.select('circle'),
-            text: groups.select('text')
-        });
-    } else {
+    if (!isUpdate) {
         groups = groups.enter().append('g').attr('class', 'unit');
-        setAttrs({
-            circles: groups.append('circle'),
-            text: groups.append('text')
-        });
+        groups.append('circle').attr('class', 'range');
+        groups.append('circle').attr('class', 'health');
+        groups.append('text');
     }
+    setAttrs(groups);
 
-    function setAttrs(config) {
-        config.circles
+    function setAttrs(groups) {
+        groups
             .attr('class', function(d) {
                 var owner = (d.Buildable || {}).Owner;
-                return owner.replace(',', '_');     // 'allies,soviet' case
-            })
+                var tokens = owner.replace(/\s/g, '').split(',');  // handle 'allies,soviet', 'soviet,allies' cases
+                tokens.sort();
+                return 'unit ' + tokens.join('_');
+            });
+
+        groups.select('circle.range')
             .transition().duration(1000)
             .attr('cx', xValueFn)
             .attr('cy', yValueFn)
-            .attr('r', 6);
+            .attr('r', function(d) { return 1.5*Math.sqrt(yAxisTypes.Speed(d)); });
 
-        config.text
+        groups.select('circle.health')
+            .transition().duration(1000)
+            .attr('cx', xValueFn)
+            .attr('cy', yValueFn)
+            .attr('r', function(d) { return 0.3*Math.sqrt(yAxisTypes.Health(d)); });
+
+        groups.select('text')
             .text(function(d) { return (d.Tooltip || {}).Name })
             .transition().duration(1000)
             .style('opacity', 1)
@@ -78,7 +83,7 @@ function renderChart(data, yFn) {
 }
 
 var yAxisTypes = {
-    'Health Points': function(d) { return d.Health.HP },
+    'Health': function(d) { return d.Health.HP },
     'Speed': function(d) { return (d.Plane || d.Helicopter || d.Mobile || {}).Speed },
     'Vision': function(d) {
         var raw = (d.RevealsShroud || {}).Range || 0;
