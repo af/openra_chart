@@ -1,39 +1,76 @@
 $defaultFont = 'RedOctober'
 
+$textColor = #fff
+$accentColor = #fe7
+$sovietColor = #f55
+$alliesColor = #55f
+$neutralColor = #aaa
+
 @font-face
     font-family: $defaultFont
     font-weight: normal
     src: url('RedOctober.ttf') format('truetype')
+
+html, body
+    margin: 0
+    min-height: 100%
+
+html
+    background: #111 linear-gradient(40deg, #111, #433)
+    color: $textColor
+    -webkit-font-smoothing: antialiased
+
+header
+    width: 400px
+    margin: 1rem auto
+    text-align: center
+    font-family: $defaultFont
+
+    h1
+        font-size: 3rem
+        line-height: 1
+        margin: 0.5rem 0
+        border-bottom: 4px solid $accentColor
+
+    > div
+        font-size: 1.5rem
+        color: $accentColor
+
+menu
+    padding: 0.5rem 1rem
+    background: linear-gradient(#333, #111)
 
 label
     font-family: $defaultFont
     margin-right: 20px
 
 .axis
-    font-size: 12px
-    font-family: $defaultFont
+    text
+        font-size: 12px
+        font-family: $defaultFont
+        fill: #eee
 
     path, line
         fill: none
-        stroke: black
+        stroke: #eee
         shape-rendering: crispEdges
 
 g.unit
     text
         font-size: 11px
-        fill: #333
+        fill: $textColor
         font-family: sans-serif
         -webkit-transform: translate(5px, -5px)
 
     circle.range
-        opacity: 0.4;
+        opacity: 0.5
 
 .allies circle
-    fill: blue
+    fill: $alliesColor
 
 .soviet circle
-    fill: red
+    fill: $sovietColor
 
 .allies_soviet circle
-    fill: #999
+    fill: $neutralColor
 
