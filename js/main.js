@@ -84,7 +84,7 @@ function renderChart(data, yFn) {
 
 var yAxisTypes = {
     'Health': function(d) { return d.Health.HP },
-    'Speed': function(d) { return (d.Plane || d.Helicopter || d.Mobile || {}).Speed },
+    'Speed': function(d) { return d.speed },
     'Vision': function(d) {
         var raw = (d.RevealsShroud || {}).Range || 0;
         return raw.toString().split('c')[0];    // Handle values of the form "5c0" (take the first number)

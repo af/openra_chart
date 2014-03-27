@@ -64,7 +64,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "Interval": 2
     },
     "unitClass": "aircraft",
-    "name": "MIG"
+    "name": "MIG",
+    "speed": 280
   },
   {
     "Inherits": "^Plane",
@@ -135,7 +136,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "Interval": 2
     },
     "unitClass": "aircraft",
-    "name": "YAK"
+    "name": "YAK",
+    "speed": 224
   },
   {
     "Inherits": "^Helicopter",
@@ -188,7 +190,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "HuskActor": "TRAN.Husk"
     },
     "unitClass": "aircraft",
-    "name": "TRAN"
+    "name": "TRAN",
+    "speed": 168
   },
   {
     "Inherits": "^Helicopter",
@@ -249,7 +252,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "Offset": -42700
     },
     "unitClass": "aircraft",
-    "name": "HELI"
+    "name": "HELI",
+    "speed": 224
   },
   {
     "Inherits": "^Helicopter",
@@ -318,7 +322,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "Offset": -42700
     },
     "unitClass": "aircraft",
-    "name": "HIND"
+    "name": "HIND",
+    "speed": 168
   },
   {
     "Inherits": "^Infantry",
@@ -358,7 +363,8 @@ units=(window.units||{}); units["release-20131223"]=[
     },
     "IgnoresDisguise": null,
     "unitClass": "infantry",
-    "name": "DOG"
+    "name": "DOG",
+    "speed": 98
   },
   {
     "Inherits": "^Infantry",
@@ -395,7 +401,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "StandAnimations": "stand,stand2"
     },
     "unitClass": "infantry",
-    "name": "E1"
+    "name": "E1",
+    "speed": 56
   },
   {
     "Inherits": "^Infantry",
@@ -439,7 +446,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "Chance": 50
     },
     "unitClass": "infantry",
-    "name": "E2"
+    "name": "E2",
+    "speed": 70
   },
   {
     "Inherits": "^Infantry",
@@ -481,7 +489,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "StandAnimations": "stand,stand2"
     },
     "unitClass": "infantry",
-    "name": "E3"
+    "name": "E3",
+    "speed": 56
   },
   {
     "Inherits": "^Infantry",
@@ -521,7 +530,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "StandAnimations": "stand,stand2"
     },
     "unitClass": "infantry",
-    "name": "E4"
+    "name": "E4",
+    "speed": 56
   },
   {
     "Inherits": "^Infantry",
@@ -565,7 +575,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "StandAnimations": "stand,stand2"
     },
     "unitClass": "infantry",
-    "name": "E6"
+    "name": "E6",
+    "speed": 56
   },
   {
     "Inherits": "^Infantry",
@@ -618,7 +629,8 @@ units=(window.units||{}); units["release-20131223"]=[
     },
     "AttackFrontal": null,
     "unitClass": "infantry",
-    "name": "SPY"
+    "name": "SPY",
+    "speed": 56
   },
   {
     "Inherits": "^Infantry",
@@ -669,7 +681,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "IdleAnimations": "idle1,idle2"
     },
     "unitClass": "infantry",
-    "name": "E7"
+    "name": "E7",
+    "speed": 70
   },
   {
     "Inherits": "^Infantry",
@@ -720,7 +733,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "IdleAnimations": "idle1,idle2"
     },
     "unitClass": "infantry",
-    "name": "MEDI"
+    "name": "MEDI",
+    "speed": 56
   },
   {
     "Inherits": "^Infantry",
@@ -771,7 +785,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "IdleAnimations": "idle1,idle2"
     },
     "unitClass": "infantry",
-    "name": "MECH"
+    "name": "MECH",
+    "speed": 56
   },
   {
     "Inherits": "^Infantry",
@@ -815,7 +830,8 @@ units=(window.units||{}); units["release-20131223"]=[
     },
     "-CrushableInfantry": null,
     "unitClass": "infantry",
-    "name": "SHOK"
+    "name": "SHOK",
+    "speed": 56
   },
   {
     "Inherits": "^Infantry",
@@ -874,7 +890,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "SabotageHPRemoval": 0
     },
     "unitClass": "infantry",
-    "name": "SNIPER"
+    "name": "SNIPER",
+    "speed": 56
   },
   {
     "Inherits": "^Ship",
@@ -935,7 +952,8 @@ units=(window.units||{}); units["release-20131223"]=[
     },
     "AttackMove": null,
     "unitClass": "ships",
-    "name": "SS"
+    "name": "SS",
+    "speed": 70
   },
   {
     "Inherits": "^Ship",
@@ -996,7 +1014,8 @@ units=(window.units||{}); units["release-20131223"]=[
     },
     "AttackMove": null,
     "unitClass": "ships",
-    "name": "MSUB"
+    "name": "MSUB",
+    "speed": 42
   },
   {
     "Inherits": "^Ship",
@@ -1056,7 +1075,8 @@ units=(window.units||{}); units["release-20131223"]=[
     },
     "RenderDetectionCircle": null,
     "unitClass": "ships",
-    "name": "DD"
+    "name": "DD",
+    "speed": 84
   },
   {
     "Inherits": "^Ship",
@@ -1132,7 +1152,8 @@ units=(window.units||{}); units["release-20131223"]=[
     "IronCurtainable": null,
     "RepairableNear": null,
     "unitClass": "ships",
-    "name": "CA"
+    "name": "CA",
+    "speed": 42
   },
   {
     "Inherits": "^Ship",
@@ -1174,7 +1195,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "JustMove": true
     },
     "unitClass": "ships",
-    "name": "LST"
+    "name": "LST",
+    "speed": 112
   },
   {
     "Inherits": "^Ship",
@@ -1229,7 +1251,8 @@ units=(window.units||{}); units["release-20131223"]=[
     "IronCurtainable": null,
     "RepairableNear": null,
     "unitClass": "ships",
-    "name": "PT"
+    "name": "PT",
+    "speed": 126
   },
   {
     "Inherits": "^Vehicle",
@@ -1270,7 +1293,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "EmptyWeapon": null
     },
     "unitClass": "vehicles",
-    "name": "V2RL"
+    "name": "V2RL",
+    "speed": 84
   },
   {
     "Inherits": "^Tank",
@@ -1321,7 +1345,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "HuskActor": "1TNK.Husk"
     },
     "unitClass": "vehicles",
-    "name": "1TNK"
+    "name": "1TNK",
+    "speed": 126
   },
   {
     "Inherits": "^Tank",
@@ -1377,7 +1402,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "Bounds": 3030
     },
     "unitClass": "vehicles",
-    "name": "2TNK"
+    "name": "2TNK",
+    "speed": 84
   },
   {
     "Inherits": "^Tank",
@@ -1433,7 +1459,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "Bounds": 3030
     },
     "unitClass": "vehicles",
-    "name": "3TNK"
+    "name": "3TNK",
+    "speed": 70
   },
   {
     "Inherits": "^Tank",
@@ -1505,7 +1532,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "Bounds": "44,38,0,-4"
     },
     "unitClass": "vehicles",
-    "name": "4TNK"
+    "name": "4TNK",
+    "speed": 42
   },
   {
     "Inherits": "^Tank",
@@ -1549,7 +1577,8 @@ units=(window.units||{}); units["release-20131223"]=[
     },
     "AutoTarget": null,
     "unitClass": "vehicles",
-    "name": "ARTY"
+    "name": "ARTY",
+    "speed": 84
   },
   {
     "Inherits": "^Vehicle",
@@ -1604,7 +1633,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "FullnessThreshold": 50
     },
     "unitClass": "vehicles",
-    "name": "HARV"
+    "name": "HARV",
+    "speed": 84
   },
   {
     "Inherits": "^Vehicle",
@@ -1657,7 +1687,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "HuskActor": "MCV.Husk"
     },
     "unitClass": "vehicles",
-    "name": "MCV"
+    "name": "MCV",
+    "speed": 84
   },
   {
     "Inherits": "^Vehicle",
@@ -1706,7 +1737,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "UnloadFacing": 220
     },
     "unitClass": "vehicles",
-    "name": "JEEP"
+    "name": "JEEP",
+    "speed": 168
   },
   {
     "Inherits": "^Tank",
@@ -1750,7 +1782,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "UnloadFacing": 220
     },
     "unitClass": "vehicles",
-    "name": "APC"
+    "name": "APC",
+    "speed": 140
   },
   {
     "Inherits": "^Tank",
@@ -1798,7 +1831,8 @@ units=(window.units||{}); units["release-20131223"]=[
     },
     "RenderDetectionCircle": null,
     "unitClass": "vehicles",
-    "name": "MNLY.AP"
+    "name": "MNLY.AP",
+    "speed": 126
   },
   {
     "Inherits": "^Tank",
@@ -1846,7 +1880,8 @@ units=(window.units||{}); units["release-20131223"]=[
     },
     "RenderDetectionCircle": null,
     "unitClass": "vehicles",
-    "name": "MNLY.AT"
+    "name": "MNLY.AT",
+    "speed": 126
   },
   {
     "Inherits": "^Vehicle",
@@ -1884,7 +1919,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "JustMove": "yes"
     },
     "unitClass": "vehicles",
-    "name": "TRUK"
+    "name": "TRUK",
+    "speed": 126
   },
   {
     "Inherits": "^Vehicle",
@@ -1934,7 +1970,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "HuskActor": "MGG.Husk"
     },
     "unitClass": "vehicles",
-    "name": "MGG"
+    "name": "MGG",
+    "speed": 84
   },
   {
     "Inherits": "^Vehicle",
@@ -1984,7 +2021,8 @@ units=(window.units||{}); units["release-20131223"]=[
     },
     "RenderJammerCircle": null,
     "unitClass": "vehicles",
-    "name": "MRJ"
+    "name": "MRJ",
+    "speed": 84
   },
   {
     "Inherits": "^Tank",
@@ -2029,7 +2067,8 @@ units=(window.units||{}); units["release-20131223"]=[
     },
     "AutoTarget": null,
     "unitClass": "vehicles",
-    "name": "TTNK"
+    "name": "TTNK",
+    "speed": 112
   },
   {
     "Inherits": "^Vehicle",
@@ -2081,7 +2120,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "Bounds": 282800
     },
     "unitClass": "vehicles",
-    "name": "FTRK"
+    "name": "FTRK",
+    "speed": 126
   },
   {
     "Inherits": "^Vehicle",
@@ -2125,7 +2165,8 @@ units=(window.units||{}); units["release-20131223"]=[
       "ExplodeInstead": "yes"
     },
     "unitClass": "vehicles",
-    "name": "DTRK"
+    "name": "DTRK",
+    "speed": 84
   },
   {
     "Inherits": "^Vehicle",
@@ -2174,7 +2215,8 @@ units=(window.units||{}); units["release-20131223"]=[
     "AttackFrontal": null,
     "ChronoshiftDeploy": null,
     "unitClass": "vehicles",
-    "name": "CTNK"
+    "name": "CTNK",
+    "speed": 112
   },
   {
     "Inherits": "^Tank",
@@ -2221,6 +2263,7 @@ units=(window.units||{}); units["release-20131223"]=[
       "TargetTypes": "Ground, MADTank"
     },
     "unitClass": "vehicles",
-    "name": "QTNK"
+    "name": "QTNK",
+    "speed": 56
   }
 ]

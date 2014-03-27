@@ -31,14 +31,25 @@ filenames.forEach(function(f) {
 
 // Convert nested objects into a flat array of units
 function massageData(units) {
+
+    // Older releases have scaled down speed values. Multiply to make them
+    // comparable to the latest code
+    var hasOldSpeedValues = units.vehicles.JEEP.Mobile.Speed < 100;
+
     var types = Object.keys(units);
     var arrays = types.map(function(t) {
         var validUnits = [];
         var unitKeys = Object.keys(units[t]);
+
         unitKeys.forEach(function(name) {
             var unit = units[t][name];
             unit.unitClass = t;
             unit.name = name;
+
+            // Normalize unit speed to a single, uniformly scaled property:
+            unit.speed = (unit.Plane || unit.Helicopter || unit.Mobile || {}).Speed;
+            if (hasOldSpeedValues) unit.speed = unit.speed * 14;
+
             var isValidUnit = unit.Valued && unit.Valued.Cost && unit.Buildable;
             var addUnit = isValidUnit && unit.Buildable.Prerequisites !== 'bio';
             if (addUnit) validUnits.push(unit);

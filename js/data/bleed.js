@@ -69,7 +69,8 @@ units=(window.units||{}); units["bleed"]=[
       "Interval": 2
     },
     "unitClass": "aircraft",
-    "name": "MIG"
+    "name": "MIG",
+    "speed": 186
   },
   {
     "Inherits": "^Plane",
@@ -144,7 +145,8 @@ units=(window.units||{}); units["bleed"]=[
       "Interval": 2
     },
     "unitClass": "aircraft",
-    "name": "YAK"
+    "name": "YAK",
+    "speed": 149
   },
   {
     "Inherits": "^Helicopter",
@@ -199,7 +201,8 @@ units=(window.units||{}); units["bleed"]=[
       "HuskActor": "TRAN.Husk"
     },
     "unitClass": "aircraft",
-    "name": "TRAN"
+    "name": "TRAN",
+    "speed": 112
   },
   {
     "Inherits": "^Helicopter",
@@ -265,7 +268,8 @@ units=(window.units||{}); units["bleed"]=[
       "Offset": -42700
     },
     "unitClass": "aircraft",
-    "name": "HELI"
+    "name": "HELI",
+    "speed": 149
   },
   {
     "Inherits": "^Helicopter",
@@ -338,7 +342,8 @@ units=(window.units||{}); units["bleed"]=[
       "Offset": -42700
     },
     "unitClass": "aircraft",
-    "name": "HIND"
+    "name": "HIND",
+    "speed": 112
   },
   {
     "Inherits": "^Infantry",
@@ -381,7 +386,8 @@ units=(window.units||{}); units["bleed"]=[
       "Range": 5
     },
     "unitClass": "infantry",
-    "name": "DOG"
+    "name": "DOG",
+    "speed": 99
   },
   {
     "Inherits": "^Infantry",
@@ -423,7 +429,8 @@ units=(window.units||{}); units["bleed"]=[
       "StandAnimations": "stand,stand2"
     },
     "unitClass": "infantry",
-    "name": "E1"
+    "name": "E1",
+    "speed": 56
   },
   {
     "Inherits": "^Infantry",
@@ -472,7 +479,8 @@ units=(window.units||{}); units["bleed"]=[
       "Chance": 50
     },
     "unitClass": "infantry",
-    "name": "E2"
+    "name": "E2",
+    "speed": 71
   },
   {
     "Inherits": "^Infantry",
@@ -518,7 +526,8 @@ units=(window.units||{}); units["bleed"]=[
       "StandAnimations": "stand,stand2"
     },
     "unitClass": "infantry",
-    "name": "E3"
+    "name": "E3",
+    "speed": 56
   },
   {
     "Inherits": "^Infantry",
@@ -562,7 +571,8 @@ units=(window.units||{}); units["bleed"]=[
       "StandAnimations": "stand,stand2"
     },
     "unitClass": "infantry",
-    "name": "E4"
+    "name": "E4",
+    "speed": 56
   },
   {
     "Inherits": "^Infantry",
@@ -608,7 +618,8 @@ units=(window.units||{}); units["bleed"]=[
       "StandAnimations": "stand,stand2"
     },
     "unitClass": "infantry",
-    "name": "E6"
+    "name": "E6",
+    "speed": 56
   },
   {
     "Inherits": "^Infantry",
@@ -658,7 +669,8 @@ units=(window.units||{}); units["bleed"]=[
     },
     "AttackFrontal": null,
     "unitClass": "infantry",
-    "name": "SPY"
+    "name": "SPY",
+    "speed": 56
   },
   {
     "Inherits": "^Infantry",
@@ -714,7 +726,8 @@ units=(window.units||{}); units["bleed"]=[
       "IdleAnimations": "idle1,idle2"
     },
     "unitClass": "infantry",
-    "name": "E7"
+    "name": "E7",
+    "speed": 71
   },
   {
     "Inherits": "^Infantry",
@@ -762,7 +775,8 @@ units=(window.units||{}); units["bleed"]=[
       "IdleAnimations": "idle1,idle2"
     },
     "unitClass": "infantry",
-    "name": "MEDI"
+    "name": "MEDI",
+    "speed": 56
   },
   {
     "Inherits": "^Infantry",
@@ -810,7 +824,8 @@ units=(window.units||{}); units["bleed"]=[
       "IdleAnimations": "idle1,idle2"
     },
     "unitClass": "infantry",
-    "name": "MECH"
+    "name": "MECH",
+    "speed": 56
   },
   {
     "Inherits": "^Infantry",
@@ -858,7 +873,8 @@ units=(window.units||{}); units["bleed"]=[
     },
     "-CrushableInfantry": null,
     "unitClass": "infantry",
-    "name": "SHOK"
+    "name": "SHOK",
+    "speed": 56
   },
   {
     "Inherits": "^Infantry",
@@ -925,7 +941,8 @@ units=(window.units||{}); units["bleed"]=[
       "Range": 6
     },
     "unitClass": "infantry",
-    "name": "SNIPER"
+    "name": "SNIPER",
+    "speed": 56
   },
   {
     "Inherits": "^Ship",
@@ -990,7 +1007,8 @@ units=(window.units||{}); units["bleed"]=[
     },
     "RenderDetectionCircle": null,
     "unitClass": "ships",
-    "name": "SS"
+    "name": "SS",
+    "speed": 71
   },
   {
     "Inherits": "^Ship",
@@ -1055,7 +1073,8 @@ units=(window.units||{}); units["bleed"]=[
     },
     "RenderDetectionCircle": null,
     "unitClass": "ships",
-    "name": "MSUB"
+    "name": "MSUB",
+    "speed": 42
   },
   {
     "Inherits": "^Ship",
@@ -1116,7 +1135,8 @@ units=(window.units||{}); units["bleed"]=[
     },
     "RenderDetectionCircle": null,
     "unitClass": "ships",
-    "name": "DD"
+    "name": "DD",
+    "speed": 85
   },
   {
     "Inherits": "^Ship",
@@ -1191,7 +1211,8 @@ units=(window.units||{}); units["bleed"]=[
     "IronCurtainable": null,
     "RepairableNear": null,
     "unitClass": "ships",
-    "name": "CA"
+    "name": "CA",
+    "speed": 42
   },
   {
     "Inherits": "^Ship",
@@ -1232,7 +1253,8 @@ units=(window.units||{}); units["bleed"]=[
     "IronCurtainable": null,
     "RepairableNear": null,
     "unitClass": "ships",
-    "name": "LST"
+    "name": "LST",
+    "speed": 113
   },
   {
     "Inherits": "^Ship",
@@ -1294,7 +1316,8 @@ units=(window.units||{}); units["bleed"]=[
     },
     "RenderDetectionCircle": null,
     "unitClass": "ships",
-    "name": "PT"
+    "name": "PT",
+    "speed": 128
   },
   {
     "Inherits": "^Vehicle",
@@ -1335,7 +1358,8 @@ units=(window.units||{}); units["bleed"]=[
       "EmptyWeapon": null
     },
     "unitClass": "vehicles",
-    "name": "V2RL"
+    "name": "V2RL",
+    "speed": 85
   },
   {
     "Inherits": "^Tank",
@@ -1387,7 +1411,8 @@ units=(window.units||{}); units["bleed"]=[
       "HuskActor": "1TNK.Husk"
     },
     "unitClass": "vehicles",
-    "name": "1TNK"
+    "name": "1TNK",
+    "speed": 128
   },
   {
     "Inherits": "^Tank",
@@ -1444,7 +1469,8 @@ units=(window.units||{}); units["bleed"]=[
       "Bounds": 3030
     },
     "unitClass": "vehicles",
-    "name": "2TNK"
+    "name": "2TNK",
+    "speed": 85
   },
   {
     "Inherits": "^Tank",
@@ -1501,7 +1527,8 @@ units=(window.units||{}); units["bleed"]=[
       "Bounds": 3030
     },
     "unitClass": "vehicles",
-    "name": "3TNK"
+    "name": "3TNK",
+    "speed": 71
   },
   {
     "Inherits": "^Tank",
@@ -1575,7 +1602,8 @@ units=(window.units||{}); units["bleed"]=[
       "Bounds": "44,38,0,-4"
     },
     "unitClass": "vehicles",
-    "name": "4TNK"
+    "name": "4TNK",
+    "speed": 42
   },
   {
     "Inherits": "^Tank",
@@ -1620,7 +1648,8 @@ units=(window.units||{}); units["bleed"]=[
     },
     "AutoTarget": null,
     "unitClass": "vehicles",
-    "name": "ARTY"
+    "name": "ARTY",
+    "speed": 85
   },
   {
     "Inherits": "^Vehicle",
@@ -1676,7 +1705,8 @@ units=(window.units||{}); units["bleed"]=[
       "FullnessThreshold": 50
     },
     "unitClass": "vehicles",
-    "name": "HARV"
+    "name": "HARV",
+    "speed": 85
   },
   {
     "Inherits": "^Vehicle",
@@ -1728,7 +1758,8 @@ units=(window.units||{}); units["bleed"]=[
       "HuskActor": "MCV.Husk"
     },
     "unitClass": "vehicles",
-    "name": "MCV"
+    "name": "MCV",
+    "speed": 85
   },
   {
     "Inherits": "^Vehicle",
@@ -1777,7 +1808,8 @@ units=(window.units||{}); units["bleed"]=[
       "PipCount": 1
     },
     "unitClass": "vehicles",
-    "name": "JEEP"
+    "name": "JEEP",
+    "speed": 170
   },
   {
     "Inherits": "^Tank",
@@ -1821,7 +1853,8 @@ units=(window.units||{}); units["bleed"]=[
       "PipCount": 5
     },
     "unitClass": "vehicles",
-    "name": "APC"
+    "name": "APC",
+    "speed": 142
   },
   {
     "Inherits": "^Tank",
@@ -1867,7 +1900,8 @@ units=(window.units||{}); units["bleed"]=[
     },
     "RenderDetectionCircle": null,
     "unitClass": "vehicles",
-    "name": "MNLY.AP"
+    "name": "MNLY.AP",
+    "speed": 128
   },
   {
     "Inherits": "^Tank",
@@ -1913,7 +1947,8 @@ units=(window.units||{}); units["bleed"]=[
     },
     "RenderDetectionCircle": null,
     "unitClass": "vehicles",
-    "name": "MNLY.AT"
+    "name": "MNLY.AT",
+    "speed": 128
   },
   {
     "Inherits": "^Vehicle",
@@ -1948,7 +1983,8 @@ units=(window.units||{}); units["bleed"]=[
       "Payload": 500
     },
     "unitClass": "vehicles",
-    "name": "TRUK"
+    "name": "TRUK",
+    "speed": 128
   },
   {
     "Inherits": "^Vehicle",
@@ -1995,7 +2031,8 @@ units=(window.units||{}); units["bleed"]=[
       "HuskActor": "MGG.Husk"
     },
     "unitClass": "vehicles",
-    "name": "MGG"
+    "name": "MGG",
+    "speed": 85
   },
   {
     "Inherits": "^Vehicle",
@@ -2045,7 +2082,8 @@ units=(window.units||{}); units["bleed"]=[
       "Range": 6
     },
     "unitClass": "vehicles",
-    "name": "MRJ"
+    "name": "MRJ",
+    "speed": 85
   },
   {
     "Inherits": "^Tank",
@@ -2090,7 +2128,8 @@ units=(window.units||{}); units["bleed"]=[
     },
     "AutoTarget": null,
     "unitClass": "vehicles",
-    "name": "TTNK"
+    "name": "TTNK",
+    "speed": 113
   },
   {
     "Inherits": "^Vehicle",
@@ -2143,7 +2182,8 @@ units=(window.units||{}); units["bleed"]=[
       "Bounds": 282800
     },
     "unitClass": "vehicles",
-    "name": "FTRK"
+    "name": "FTRK",
+    "speed": 128
   },
   {
     "Inherits": "^Vehicle",
@@ -2184,7 +2224,8 @@ units=(window.units||{}); units["bleed"]=[
       "ExplodeInstead": "yes"
     },
     "unitClass": "vehicles",
-    "name": "DTRK"
+    "name": "DTRK",
+    "speed": 85
   },
   {
     "Inherits": "^Vehicle",
@@ -2233,7 +2274,8 @@ units=(window.units||{}); units["bleed"]=[
     "AttackFrontal": null,
     "PortableChrono": null,
     "unitClass": "vehicles",
-    "name": "CTNK"
+    "name": "CTNK",
+    "speed": 113
   },
   {
     "Inherits": "^Tank",
@@ -2277,7 +2319,8 @@ units=(window.units||{}); units["bleed"]=[
       "TargetTypes": "Ground, MADTank"
     },
     "unitClass": "vehicles",
-    "name": "QTNK"
+    "name": "QTNK",
+    "speed": 56
   },
   {
     "Inherits": "^Vehicle",
@@ -2338,6 +2381,7 @@ units=(window.units||{}); units["bleed"]=[
       "Range": 6
     },
     "unitClass": "vehicles",
-    "name": "STNK"
+    "name": "STNK",
+    "speed": 113
   }
 ]
