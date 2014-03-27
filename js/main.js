@@ -1,7 +1,7 @@
 var d3 = require('d3');
 var svg = d3.select('svg');
 
-var margin = { top: 30, left: 30, right: 30, bottom: 30 };
+var margin = { top: 30, left: 50, right: 50, bottom: 30 };
 var width = window.innerWidth;
 var height = 600;
 

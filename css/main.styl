@@ -1,5 +1,32 @@
-.axis path, .axis line
-    fill: none; stroke: black; shape-rendering: crispEdges
+$defaultFont = 'RedOctober'
+
+@font-face
+    font-family: $defaultFont
+    font-weight: normal
+    src: url('RedOctober.ttf') format('truetype')
+
+label
+    font-family: $defaultFont
+    margin-right: 20px
+
+.axis
+    font-size: 12px
+    font-family: $defaultFont
+
+    path, line
+        fill: none
+        stroke: black
+        shape-rendering: crispEdges
+
+g.unit
+    text
+        font-size: 11px
+        fill: #333
+        font-family: sans-serif
+        -webkit-transform: translate(5px, -5px)
+
+    circle.range
+        opacity: 0.4;
 
 .allies circle
     fill: blue
@@ -10,11 +37,3 @@
 .allies_soviet circle
     fill: #999
 
-text
-    font-size:11px; fill: #333; font-family: sans-serif;
-
-g.unit text
-    -webkit-transform: translate(5px, -5px)
-
-circle.range
-    opacity: 0.4;
