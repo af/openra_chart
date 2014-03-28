@@ -46,7 +46,7 @@ function renderChart(data, yFn) {
 
     if (!isUpdate) {
         groups = groups.enter().append('g').attr('class', 'unit');
-        groups.append('circle').attr('class', 'range');
+        groups.append('ellipse').attr('class', 'range');
         groups.append('circle').attr('class', 'health');
         groups.append('text');
     }
@@ -61,11 +61,12 @@ function renderChart(data, yFn) {
                 return 'unit ' + tokens.join('_');
             });
 
-        groups.select('circle.range')
+        groups.select('ellipse.range')
             .transition().duration(1000)
             .attr('cx', xValueFn)
             .attr('cy', yValueFn)
-            .attr('r', function(d) { return 1.5*Math.sqrt(yAxisTypes.Speed(d)); });
+            .attr('ry', function(d) { return 2*yAxisTypes.Vision(d); })
+            .attr('rx', function(d) { return yAxisTypes.Speed(d)/8; });
 
         groups.select('circle.health')
             .transition().duration(1000)
