@@ -20,6 +20,7 @@ filenames.forEach(function(f) {
     if (filesToCheck.indexOf(key) === -1) return;
 
     var txt = fs.readFileSync(path.join(YAML_DIR, f), 'utf8');
+    txt = txt.replace('Offset:-1,-1', 'Offset: -1,-1');     // Fix error in old vehicles.yaml
     var detabbed = txt.replace(/\t/g, '    ');     // convert tabs to spaces
     console.log('parsing', key);
     try {
