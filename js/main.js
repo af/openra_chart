@@ -5,7 +5,10 @@ var margin = { top: 30, left: 50, right: 50, bottom: 30 };
 var width = window.innerWidth;
 var height = 600;
 
-var xScale = d3.scale.linear();
+var buildings = ['tent', 'barr', 'ftur', 'weap', 'tsla', 'dome', 'hpad', 'afld',
+                 'fix', 'spen', 'syrd', 'proc', 'weap', 'atek', 'stek', 'pdox'];
+
+var xScale = d3.scale.ordinal().domain(buildings);
 var yScale = d3.scale.linear();
 
 // Setup axes:
@@ -16,13 +19,29 @@ var xAxisEl = svg.append('g').attr('class', 'axis')
 var yAxisEl = svg.append('g').attr('class', 'axis')
                 .attr('transform', 'translate(' + margin.left + ',0)');
 
+function renderChart(data) {
+    // var buildings = data.map(function(d) { return d.Buildable.Prerequisites; });
+    // window.b = buildings;
+    // console.log(buildings)
+    var xFn = function(d) {
+        // TODO: fill in prereqs if inferred by unit type (infantry -> barracks, etc)
+        var prereqs = d.Buildable.Prerequisites;
+        if (!prereqs) {
+            if (d.Inherits === '^Vehicle' || d.Inherits === '^Tank') return 'weap';
+            if (d.Inherits === '^Infantry') return 'tent';
+            if (d.Inherits === '^Plane') return 'afld';
+            if (d.Inherits === '^Ship') return 'syrd';
+            else return;
+        }
+        if (prereqs === 'techcenter') return 'atek';    // Exception for tanya
+        var items = prereqs.split(',');
+        return items[items.length - 1].trim();
+    };
 
-function renderChart(data, yFn) {
-    var xFn = function(d) { return (d.Valued.Cost) };
+    var yFn = function(d) { return (d.Valued.Cost) };
 
     // Set up x/y scales and axes for the given data:
-    xScale.domain([0, d3.max(data, xFn)])
-          .range([margin.left, width - margin.left - margin.right]);
+    xScale.rangePoints([margin.left, width - margin.left - margin.right], 0.5);
     xAxis.scale(xScale).orient('bottom');
     xAxisEl.call(xAxis);
 
