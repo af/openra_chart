@@ -8,6 +8,15 @@ var height = svg.attr('height');
 var buildings = ['tent', 'barr', 'ftur', 'weap', 'tsla', 'dome', 'hpad', 'afld',
                  'fix', 'spen', 'syrd', 'proc', 'weap', 'atek', 'stek', 'pdox'];
 
+var dataAccessors = {
+    'Health': function(d) { return d.Health.HP },
+    'Speed': function(d) { return d.speed },
+    'Vision': function(d) {
+        var raw = (d.RevealsShroud || {}).Range || 0;
+        return raw.toString().split('c')[0];    // Handle values of the form "5c0" (take the first number)
+    }
+};
+
 var xScale = d3.scale.ordinal().domain(buildings);
 var yScale = d3.scale.linear();
 
@@ -24,7 +33,6 @@ function renderChart(data) {
     // window.b = buildings;
     // console.log(buildings)
     var xFn = function(d) {
-        // TODO: fill in prereqs if inferred by unit type (infantry -> barracks, etc)
         var prereqs = d.Buildable.Prerequisites;
         if (!prereqs) {
             if (d.Inherits === '^Vehicle' || d.Inherits === '^Tank') return 'weap';
@@ -84,14 +92,14 @@ function renderChart(data) {
             .transition().duration(1000)
             .attr('cx', xValueFn)
             .attr('cy', yValueFn)
-            .attr('ry', function(d) { return 2*yAxisTypes.Vision(d); })
-            .attr('rx', function(d) { return yAxisTypes.Speed(d)/8; });
+            .attr('ry', function(d) { return 2*dataAccessors.Vision(d); })
+            .attr('rx', function(d) { return dataAccessors.Speed(d)/8; });
 
         groups.select('circle.health')
             .transition().duration(1000)
             .attr('cx', xValueFn)
             .attr('cy', yValueFn)
-            .attr('r', function(d) { return 0.3*Math.sqrt(yAxisTypes.Health(d)); });
+            .attr('r', function(d) { return 0.3*Math.sqrt(dataAccessors.Health(d)); });
 
         groups.select('text')
             .text(function(d) { return (d.Tooltip || {}).Name })
@@ -102,29 +110,10 @@ function renderChart(data) {
     }
 }
 
-var yAxisTypes = {
-    'Health': function(d) { return d.Health.HP },
-    'Speed': function(d) { return d.speed },
-    'Vision': function(d) {
-        var raw = (d.RevealsShroud || {}).Range || 0;
-        return raw.toString().split('c')[0];    // Handle values of the form "5c0" (take the first number)
-    }
-};
-
 function updateChart() {
     var unitList = document.querySelector('[name=data_set]').value;
-    var chartType = document.querySelector('[name=chart_type]').value;
-    renderChart(window.units[unitList], yAxisTypes[chartType]);
+    renderChart(window.units[unitList]);
 }
-
-// Wire up the select box to support choosing different chart types:
-d3.select('select[name=chart_type]')
-    .on('change', updateChart)
-    .selectAll('option')
-    .data(Object.keys(yAxisTypes))
-    .enter()
-        .append('option')
-        .text(function(d) { return d });
 
 d3.select('select[name=data_set]')
     .on('change', updateChart)
