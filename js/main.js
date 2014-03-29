@@ -3,7 +3,7 @@ var svg = d3.select('svg');
 
 var margin = { top: 30, left: 50, right: 50, bottom: 30 };
 var width = window.innerWidth;
-var height = 600;
+var height = svg.attr('height');
 
 var buildings = ['tent', 'barr', 'ftur', 'weap', 'tsla', 'dome', 'hpad', 'afld',
                  'fix', 'spen', 'syrd', 'proc', 'weap', 'atek', 'stek', 'pdox'];
