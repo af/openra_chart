@@ -1,0 +1,75 @@
+@font-face {
+  font-family: 'RedOctober';
+  font-weight: normal;
+  src: url("RedOctober.ttf") format('truetype');
+}
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+html {
+  background: #111 linear-gradient(40deg, #111, #433);
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+header {
+  width: 400px;
+  margin: 1rem auto;
+  text-align: center;
+  font-family: 'RedOctober';
+}
+header h1 {
+  font-size: 3rem;
+  line-height: 1;
+  margin: 0.5rem 0;
+  border-bottom: 4px solid #fe7;
+}
+header > div {
+  font-size: 1.5rem;
+  color: #fe7;
+}
+menu {
+  padding: 0.5rem 1rem;
+  background: linear-gradient(#333, #111);
+}
+label {
+  font-family: 'RedOctober';
+  margin-right: 20px;
+}
+.axis text {
+  font-size: 12px;
+  font-family: 'RedOctober';
+  fill: #eee;
+}
+.axis .label {
+  text-anchor: middle;
+  fill: #fe7;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #eee;
+  shape-rendering: crispEdges;
+}
+g.unit text {
+  font-size: 11px;
+  fill: #fff;
+  font-family: sans-serif;
+  -webkit-transform: translate(5px, -5px);
+}
+g.unit .range {
+  opacity: 0.5;
+}
+.allies circle,
+.allies ellipse {
+  fill: #55f;
+}
+.soviet circle,
+.soviet ellipse {
+  fill: #f55;
+}
+.allies_soviet circle,
+.allies_soviet ellipse {
+  fill: #aaa;
+}
