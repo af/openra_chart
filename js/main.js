@@ -1,7 +1,7 @@
 var d3 = require('d3');
 var svg = d3.select('svg');
 
-var margin = { top: 30, left: 50, right: 50, bottom: 30 };
+var margin = { top: 30, left: 80, right: 30, bottom: 30 };
 var width = window.innerWidth;
 var height = svg.attr('height');
 
@@ -23,30 +23,33 @@ var yScale = d3.scale.linear();
 // Setup axes:
 var xAxis = d3.svg.axis();
 var yAxis = d3.svg.axis();
-var xAxisEl = svg.append('g').attr('class', 'axis')
+var xAxisEl = svg.append('g').attr('class', 'x axis')
                 .attr('transform', 'translate(0,' + (height - margin.top - margin.bottom) + ')');
-var yAxisEl = svg.append('g').attr('class', 'axis')
+var yAxisEl = svg.append('g').attr('class', 'y axis')
                 .attr('transform', 'translate(' + margin.left + ',0)');
+
+
+var xFn = function(d) {
+    var prereqs = d.Buildable.Prerequisites;
+    if (!prereqs) {
+        if (d.Inherits === '^Vehicle' || d.Inherits === '^Tank') return 'weap';
+        if (d.Inherits === '^Infantry') return 'tent';
+        if (d.Inherits === '^Plane') return 'afld';
+        if (d.Inherits === '^Ship') return 'syrd';
+        else return;
+    }
+    if (prereqs === 'techcenter') return 'atek';    // Exception for tanya
+    var items = prereqs.split(',');
+    return items[items.length - 1].trim();
+};
+
+var yFn = function(d) { return (d.Valued.Cost) };
+
 
 function renderChart(data) {
     // var buildings = data.map(function(d) { return d.Buildable.Prerequisites; });
     // window.b = buildings;
     // console.log(buildings)
-    var xFn = function(d) {
-        var prereqs = d.Buildable.Prerequisites;
-        if (!prereqs) {
-            if (d.Inherits === '^Vehicle' || d.Inherits === '^Tank') return 'weap';
-            if (d.Inherits === '^Infantry') return 'tent';
-            if (d.Inherits === '^Plane') return 'afld';
-            if (d.Inherits === '^Ship') return 'syrd';
-            else return;
-        }
-        if (prereqs === 'techcenter') return 'atek';    // Exception for tanya
-        var items = prereqs.split(',');
-        return items[items.length - 1].trim();
-    };
-
-    var yFn = function(d) { return (d.Valued.Cost) };
 
     // Set up x/y scales and axes for the given data:
     xScale.rangePoints([margin.left, width - margin.left - margin.right], 0.5);
@@ -61,7 +64,7 @@ function renderChart(data) {
     var xValueFn = function(d, i) { return xScale(xFn(d,i)); };
     var yValueFn = function(d, i) { return yScale(yFn(d,i)); };
     var groups = svg.selectAll('g.unit').data(data);
-    var isUpdate = !svg.selectAll('circle').empty();
+    var isFirstRender = svg.selectAll('circle').empty();
 
     var exit = groups.exit();
     exit.selectAll('circle')
@@ -71,11 +74,24 @@ function renderChart(data) {
         .transition()
         .style('opacity', 0);
 
-    if (!isUpdate) {
+    if (isFirstRender) {
         groups = groups.enter().append('g').attr('class', 'unit');
         groups.append('ellipse').attr('class', 'range');
         groups.append('circle').attr('class', 'health');
         groups.append('text');
+
+        // Label Axes
+        xAxisEl.append('text')
+            .attr('class', 'label')
+            .text('Building dependencies')
+            .attr('x', width/2)
+            .attr('y', margin.bottom + 10);
+        yAxisEl.append('text')
+            .attr('class', 'label')
+            .text('Cost ($)')
+            .attr('transform', 'rotate(270 ' + -margin.left*0.75 + ' ' + height/2 + ')')
+            .attr('x', 0)
+            .attr('y', height/2);
     }
     setAttrs(groups);
 
