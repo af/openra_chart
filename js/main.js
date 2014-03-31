@@ -70,6 +70,10 @@ function renderChart(data) {
     exit.selectAll('circle')
         .transition()
         .attr('r', 0);
+    exit.selectAll('ellipse')
+        .transition()
+        .attr('rx', 0)
+        .attr('ry', 0);
     exit.selectAll('text')
         .transition()
         .style('opacity', 0);
