@@ -1,4 +1,4 @@
-units=(window.units||{}); units["bleed"]=[
+units=(window.units||{}); units["playtest-20140405"]=[
   {
     "Inherits": "^Plane",
     "Buildable": {
@@ -607,9 +607,6 @@ units=(window.units||{}); units["bleed"]=[
     "ExternalCaptures": {
       "Type": "building"
     },
-    "Captures": {
-      "CaptureTypes": "husk"
-    },
     "TakeCover": null,
     "-AutoTarget": null,
     "-RenderInfantry": null,
@@ -766,7 +763,8 @@ units=(window.units||{}); units["bleed"]=[
       "Weapon": "Heal"
     },
     "AttackMedic": {
-      "Cursor": "heal"
+      "Cursor": "heal",
+      "OutsideRangeCursor": "heal"
     },
     "TakeCover": null,
     "-AutoTarget": null,
@@ -792,7 +790,7 @@ units=(window.units||{}); units["bleed"]=[
     },
     "Tooltip": {
       "Name": "Mechanic",
-      "Description": "Repairs nearby vehicles.\\n  Strong vs Nothing\\n  Weak vs Everything"
+      "Description": "Repairs nearby vehicles and restores\\nhusks to working condition.\\n  Strong vs Nothing\\n  Weak vs Everything"
     },
     "Selectable": {
       "Voice": "MechanicVoice",
@@ -815,7 +813,11 @@ units=(window.units||{}); units["bleed"]=[
       "Weapon": "Repair"
     },
     "AttackMedic": {
-      "Cursor": "repair"
+      "Cursor": "repair",
+      "OutsideRangeCursor": "repair"
+    },
+    "Captures": {
+      "CaptureTypes": "husk"
     },
     "TakeCover": null,
     "-AutoTarget": null,
@@ -831,6 +833,46 @@ units=(window.units||{}); units["bleed"]=[
     "Inherits": "^Infantry",
     "Buildable": {
       "Queue": "Infantry",
+      "BuildPaletteOrder": 90,
+      "Owner": "soviet",
+      "Prerequisites": "fix",
+      "Hotkey": "j"
+    },
+    "Valued": {
+      "Cost": 500
+    },
+    "Tooltip": {
+      "Name": "Hijacker",
+      "Description": "Hijacks enemy vehicles. Unarmed\\n  Strong vs Tanks\\n  Weak vs Infantry, Aircraft"
+    },
+    "Selectable": {
+      "Voice": "ThiefVoice",
+      "Bounds": "12,17,0,-9"
+    },
+    "Health": {
+      "HP": 80
+    },
+    "Mobile": {
+      "Speed": 56
+    },
+    "RevealsShroud": {
+      "Range": "5c0"
+    },
+    "Passenger": {
+      "PipType": "Yellow"
+    },
+    "Captures": {
+      "CaptureTypes": "vehicle"
+    },
+    "-AutoTarget": null,
+    "unitClass": "infantry",
+    "name": "HIJACKER",
+    "speed": 56
+  },
+  {
+    "Inherits": "^Infantry",
+    "Buildable": {
+      "Queue": "Infantry",
       "BuildPaletteOrder": 70,
       "Prerequisites": "stek,tsla",
       "Owner": "soviet",
@@ -840,7 +882,7 @@ units=(window.units||{}); units["bleed"]=[
       "Cost": 400
     },
     "Tooltip": {
-      "Name": "Tesla Trooper",
+      "Name": "Shock Trooper",
       "Description": "Infantry with tesla coils\\n Strong vs Infantry\\n Weak vs Vehicles"
     },
     "Selectable": {
@@ -848,7 +890,7 @@ units=(window.units||{}); units["bleed"]=[
       "Bounds": "12,17,0,-9"
     },
     "Health": {
-      "HP": 80
+      "HP": 100
     },
     "Mobile": {
       "Speed": 56
@@ -865,9 +907,7 @@ units=(window.units||{}); units["bleed"]=[
       "Weapon": "PortaTesla"
     },
     "AttackFrontal": null,
-    "TakeCover": null,
-    "-RenderInfantry": null,
-    "RenderInfantryProne": {
+    "RenderInfantry": {
       "IdleAnimations": "idle1,idle2",
       "StandAnimations": "stand,stand2"
     },
@@ -975,8 +1015,8 @@ units=(window.units||{}); units["bleed"]=[
     },
     "-TargetableUnit": null,
     "TargetableSubmarine": {
-      "TargetTypes": "Ground, Water",
-      "CloakedTargetTypes": "Underwater"
+      "TargetTypes": "Ground, Water, Repair",
+      "CloakedTargetTypes": "Underwater, Repair"
     },
     "RenderUnit": null,
     "Cloak": {
@@ -1042,8 +1082,8 @@ units=(window.units||{}); units["bleed"]=[
     "RenderUnit": null,
     "-TargetableUnit": null,
     "TargetableSubmarine": {
-      "TargetTypes": "Ground, Water",
-      "CloakedTargetTypes": "Underwater"
+      "TargetTypes": "Ground, Water, Repair",
+      "CloakedTargetTypes": "Underwater, Repair"
     },
     "Cloak": {
       "CloakTypes": "Underwater",
@@ -2037,7 +2077,7 @@ units=(window.units||{}); units["bleed"]=[
   {
     "Inherits": "^Vehicle",
     "Valued": {
-      "Cost": 1000
+      "Cost": 800
     },
     "Tooltip": {
       "Name": "Mobile Radar Jammer",
@@ -2147,7 +2187,7 @@ units=(window.units||{}); units["bleed"]=[
       "Description": "Mobile unit with mounted Flak Cannon.\\n  Strong vs Light Vehicles, Aircraft  \\n  Weak vs Tanks"
     },
     "Health": {
-      "HP": 120
+      "HP": 150
     },
     "Armor": {
       "Type": "Light"
@@ -2157,10 +2197,10 @@ units=(window.units||{}); units["bleed"]=[
       "Speed": 128
     },
     "RevealsShroud": {
-      "Range": "4c0"
+      "Range": "6c0"
     },
     "Turreted": {
-      "ROT": 5,
+      "ROT": 10,
       "Offset": -2980298
     },
     "Armament": {
@@ -2316,7 +2356,7 @@ units=(window.units||{}); units["bleed"]=[
     "MadTank": null,
     "-EjectOnDeath": null,
     "TargetableUnit": {
-      "TargetTypes": "Ground, MADTank"
+      "TargetTypes": "Ground, MADTank, Repair"
     },
     "unitClass": "vehicles",
     "name": "QTNK",
