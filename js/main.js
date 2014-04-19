@@ -63,7 +63,8 @@ function renderChart(data) {
 
     var xValueFn = function(d, i) { return xScale(xFn(d,i)); };
     var yValueFn = function(d, i) { return yScale(yFn(d,i)); };
-    var groups = svg.selectAll('g.unit').data(data);
+    var keyFn = function(d) { return d.name };
+    var groups = svg.selectAll('g.unit').data(data, keyFn);
     var isFirstRender = svg.selectAll('circle').empty();
 
     var exit = groups.exit();
