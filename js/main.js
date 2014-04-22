@@ -134,9 +134,17 @@ function renderChart(data) {
 function updateChart() {
     var unitList = document.querySelector('[name=data_set]').value;
     var faction = document.querySelector('[name=faction]').value;
+    var unitType = document.querySelector('[name=unit_type]').value;
+
     var units = window.units[unitList].filter(function(unit) {
         if (faction === 'all') return true;
         else return unit.Buildable.Owner === faction;
+    }).filter(function(unit) {
+        var queueName = unit.Buildable.Queue;
+
+        if (unitType === 'all') return true;
+        else if (unitType === 'air') return queueName === 'Helicopter' || queueName === 'Plane';
+        else return queueName.match(new RegExp(unitType + '$', 'i'));
     });
     renderChart(units);
 }
@@ -153,6 +161,14 @@ d3.select('select[name=faction]')
     .on('change', updateChart)
     .selectAll('option')
     .data(['all', 'allies', 'soviet'])
+    .enter()
+        .append('option')
+        .text(function(d) { return d });
+
+d3.select('select[name=unit_type]')
+    .on('change', updateChart)
+    .selectAll('option')
+    .data(['all', 'infantry', 'vehicle', 'ship', 'air'])
     .enter()
         .append('option')
         .text(function(d) { return d });
