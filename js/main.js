@@ -133,13 +133,26 @@ function renderChart(data) {
 
 function updateChart() {
     var unitList = document.querySelector('[name=data_set]').value;
-    renderChart(window.units[unitList]);
+    var faction = document.querySelector('[name=faction]').value;
+    var units = window.units[unitList].filter(function(unit) {
+        if (faction === 'all') return true;
+        else return unit.Buildable.Owner === faction;
+    });
+    renderChart(units);
 }
 
 d3.select('select[name=data_set]')
     .on('change', updateChart)
     .selectAll('option')
     .data(Object.keys(window.units))
+    .enter()
+        .append('option')
+        .text(function(d) { return d });
+
+d3.select('select[name=faction]')
+    .on('change', updateChart)
+    .selectAll('option')
+    .data(['all', 'allies', 'soviet'])
     .enter()
         .append('option')
         .text(function(d) { return d });
