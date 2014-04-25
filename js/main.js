@@ -45,6 +45,9 @@ var xFn = function(d) {
 
 var yFn = function(d) { return (d.Valued.Cost) };
 
+// Simple html-based tooltips, shown on unit hover
+var tooltip = d3.select('body')
+                .append('div').attr('class', 'tooltip hidden');
 
 function renderChart(data) {
     // var buildings = data.map(function(d) { return d.Buildable.Prerequisites; });
@@ -128,6 +131,21 @@ function renderChart(data) {
             .style('opacity', 1)
             .attr('x', xValueFn)
             .attr('y', yValueFn);
+
+        // Tooltip on hover:
+        groups
+            .on('mouseover', function(d) {
+                var svgNode = svg.node();
+                tooltip.select('div').remove();
+                tooltip
+                    .classed('hidden', false)
+                    .style('left', (svgNode.offsetLeft + xValueFn(d)) + 'px')
+                    .style('top', (svgNode.offsetTop + yValueFn(d)) + 'px');
+
+                tooltip.append('div')
+                    .text(d.Tooltip.Description.replace(/\\n/g, ' '));
+            })
+            .on('mouseout', function(d) { tooltip.classed('hidden', true); });
     }
 }
 
