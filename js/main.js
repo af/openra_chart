@@ -1,12 +1,14 @@
 var d3 = require('d3');
 var svg = d3.select('svg');
+var Tooltip = require('./tooltip');
+
 
 var margin = { top: 30, left: 80, right: 30, bottom: 30 };
 var width = window.innerWidth;
 var height = svg.attr('height');
-
 var buildings = ['tent', 'barr', 'ftur', 'weap', 'tsla', 'dome', 'hpad', 'afld',
                  'fix', 'spen', 'syrd', 'proc', 'weap', 'atek', 'stek', 'pdox'];
+
 
 var dataAccessors = {
     'Health': function(d) { return d.Health.HP },
@@ -45,6 +47,8 @@ var xFn = function(d) {
 
 var yFn = function(d) { return (d.Valued.Cost) };
 
+// Simple html-based tooltips, shown on unit hover
+var tooltip = new Tooltip();
 
 function renderChart(data) {
     // var buildings = data.map(function(d) { return d.Buildable.Prerequisites; });
@@ -128,18 +132,55 @@ function renderChart(data) {
             .style('opacity', 1)
             .attr('x', xValueFn)
             .attr('y', yValueFn);
+
+        // Tooltip on hover:
+        groups
+            .on('mouseover', function(d) {
+                tooltip.render(d);
+                tooltip.positionOnSVG(svg.node(), xValueFn(d), yValueFn(d));
+            })
+            .on('mouseout', function(d) { tooltip.hide(); });
     }
 }
 
 function updateChart() {
     var unitList = document.querySelector('[name=data_set]').value;
-    renderChart(window.units[unitList]);
+    var faction = document.querySelector('[name=faction]').value;
+    var unitType = document.querySelector('[name=unit_type]').value;
+
+    var units = window.units[unitList].filter(function(unit) {
+        if (faction === 'all') return true;
+        else return unit.Buildable.Owner === faction;
+    }).filter(function(unit) {
+        var queueName = unit.Buildable.Queue;
+
+        if (unitType === 'all') return true;
+        else if (unitType === 'air') return queueName === 'Helicopter' || queueName === 'Plane';
+        else return queueName.match(new RegExp(unitType + '$', 'i'));
+    });
+    renderChart(units);
 }
 
 d3.select('select[name=data_set]')
     .on('change', updateChart)
     .selectAll('option')
     .data(Object.keys(window.units))
+    .enter()
+        .append('option')
+        .text(function(d) { return d });
+
+d3.select('select[name=faction]')
+    .on('change', updateChart)
+    .selectAll('option')
+    .data(['all', 'allies', 'soviet'])
+    .enter()
+        .append('option')
+        .text(function(d) { return d });
+
+d3.select('select[name=unit_type]')
+    .on('change', updateChart)
+    .selectAll('option')
+    .data(['all', 'infantry', 'vehicle', 'ship', 'air'])
     .enter()
         .append('option')
         .text(function(d) { return d });

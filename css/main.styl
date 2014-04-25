@@ -1,7 +1,7 @@
 $defaultFont = 'RedOctober'
 
 $textColor = #fff
-$accentColor = #fe7
+$accentColor = #ec6
 $sovietColor = #f55
 $alliesColor = #55f
 $neutralColor = #aaa
@@ -16,7 +16,7 @@ html, body
     min-height: 100%
 
 html
-    background: #111 linear-gradient(40deg, #111, #433)
+    background: #111 radial-gradient(at 90% 10%, #322, #111)
     color: $textColor
     -webkit-font-smoothing: antialiased
 
@@ -48,7 +48,7 @@ label
     text
         font-size: 12px
         font-family: $defaultFont
-        fill: #eee
+        fill: #ccc
 
     .label
         text-anchor: middle
@@ -56,14 +56,14 @@ label
 
     path, line
         fill: none
-        stroke: #eee
+        stroke: #555
         shape-rendering: crispEdges
 
 g.unit
     text
         font-size: 11px
         fill: $textColor
-        font-family: sans-serif
+        font-family: monospace
         -webkit-transform: translate(5px, -5px)
 
     .range
@@ -81,3 +81,20 @@ g.unit
     circle, ellipse
         fill: $neutralColor
 
+.tooltip
+    position: absolute
+    background: rgba(#000, 0.9)
+    padding: 10px
+    max-width: 300px
+
+    &.hidden
+        visibility: hidden
+
+    h2
+        margin: 0 0 3px
+        font-family: monospace
+        font-size: 1em
+
+    div
+        color: #aaa
+        font-family: monospace
