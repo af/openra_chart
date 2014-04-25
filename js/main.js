@@ -139,7 +139,7 @@ function renderChart(data) {
                 tooltip.render(d);
                 tooltip.positionOnSVG(svg.node(), xValueFn(d), yValueFn(d));
             })
-            .on('mouseout', function(d) { tooltip.classed('hidden', true); });
+            .on('mouseout', function(d) { tooltip.hide(); });
     }
 }
 
