@@ -1,13 +1,15 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var d3 = require('d3');
 var svg = d3.select('svg');
+var Tooltip = require('./tooltip');
+
 
 var margin = { top: 30, left: 80, right: 30, bottom: 30 };
 var width = window.innerWidth;
 var height = svg.attr('height');
-
 var buildings = ['tent', 'barr', 'ftur', 'weap', 'tsla', 'dome', 'hpad', 'afld',
                  'fix', 'spen', 'syrd', 'proc', 'weap', 'atek', 'stek', 'pdox'];
+
 
 var dataAccessors = {
     'Health': function(d) { return d.Health.HP },
@@ -46,6 +48,8 @@ var xFn = function(d) {
 
 var yFn = function(d) { return (d.Valued.Cost) };
 
+// Simple html-based tooltips, shown on unit hover
+var tooltip = new Tooltip();
 
 function renderChart(data) {
     // var buildings = data.map(function(d) { return d.Buildable.Prerequisites; });
@@ -64,7 +68,8 @@ function renderChart(data) {
 
     var xValueFn = function(d, i) { return xScale(xFn(d,i)); };
     var yValueFn = function(d, i) { return yScale(yFn(d,i)); };
-    var groups = svg.selectAll('g.unit').data(data);
+    var keyFn = function(d) { return d.name };
+    var groups = svg.selectAll('g.unit').data(data, keyFn);
     var isFirstRender = svg.selectAll('circle').empty();
 
     var exit = groups.exit();
@@ -128,12 +133,33 @@ function renderChart(data) {
             .style('opacity', 1)
             .attr('x', xValueFn)
             .attr('y', yValueFn);
+
+        // Tooltip on hover:
+        groups
+            .on('mouseover', function(d) {
+                tooltip.render(d);
+                tooltip.positionOnSVG(svg.node(), xValueFn(d), yValueFn(d));
+            })
+            .on('mouseout', function(d) { tooltip.hide(); });
     }
 }
 
 function updateChart() {
     var unitList = document.querySelector('[name=data_set]').value;
-    renderChart(window.units[unitList]);
+    var faction = document.querySelector('[name=faction]').value;
+    var unitType = document.querySelector('[name=unit_type]').value;
+
+    var units = window.units[unitList].filter(function(unit) {
+        if (faction === 'all') return true;
+        else return unit.Buildable.Owner === faction;
+    }).filter(function(unit) {
+        var queueName = unit.Buildable.Queue;
+
+        if (unitType === 'all') return true;
+        else if (unitType === 'air') return queueName === 'Helicopter' || queueName === 'Plane';
+        else return queueName.match(new RegExp(unitType + '$', 'i'));
+    });
+    renderChart(units);
 }
 
 d3.select('select[name=data_set]')
@@ -144,9 +170,62 @@ d3.select('select[name=data_set]')
         .append('option')
         .text(function(d) { return d });
 
+d3.select('select[name=faction]')
+    .on('change', updateChart)
+    .selectAll('option')
+    .data(['all', 'allies', 'soviet'])
+    .enter()
+        .append('option')
+        .text(function(d) { return d });
+
+d3.select('select[name=unit_type]')
+    .on('change', updateChart)
+    .selectAll('option')
+    .data(['all', 'infantry', 'vehicle', 'ship', 'air'])
+    .enter()
+        .append('option')
+        .text(function(d) { return d });
+
 updateChart();
 
-},{"d3":2}],2:[function(require,module,exports){
+},{"./tooltip":2,"d3":3}],2:[function(require,module,exports){
+var d3 = require('d3');
+
+var Tooltip = function() {
+    this.el = d3.select('body')
+                .append('div').attr('class', 'tooltip hidden');
+
+    this.el.append('h2').attr('class', 'name');
+    this.el.append('div').attr('class', 'description');
+};
+
+Tooltip.prototype = {
+    positionOnSVG: function(svgNode, x, y) {
+        this.el.classed('hidden', false)
+            .style('left', (svgNode.offsetLeft + x) + 'px')
+            .style('top', (svgNode.offsetTop + y) + 'px');
+    },
+
+    render: function(d) {
+        var dataMap = {
+            '.name': d.Tooltip.Name,
+            '.description': d.Tooltip.Description.replace(/\\n/g, ' '),
+        };
+
+        for (var selector in dataMap) {
+            this.el.select(selector).text(dataMap[selector]);
+        }
+    },
+
+    hide: function() {
+        this.el.classed('hidden', true);
+    }
+};
+
+module.exports = Tooltip;
+
+
+},{"d3":3}],3:[function(require,module,exports){
 !function() {
   var d3 = {
     version: "3.4.3"

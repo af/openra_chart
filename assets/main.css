@@ -9,7 +9,7 @@ body {
   min-height: 100%;
 }
 html {
-  background: #111 linear-gradient(40deg, #111, #433);
+  background: #111 radial-gradient(at 90% 10%, #322, #111);
   color: #fff;
   -webkit-font-smoothing: antialiased;
 }
@@ -23,11 +23,11 @@ header h1 {
   font-size: 3rem;
   line-height: 1;
   margin: 0.5rem 0;
-  border-bottom: 4px solid #fe7;
+  border-bottom: 4px solid #ec6;
 }
 header > div {
   font-size: 1.5rem;
-  color: #fe7;
+  color: #ec6;
 }
 menu {
   padding: 0.5rem 1rem;
@@ -40,22 +40,22 @@ label {
 .axis text {
   font-size: 12px;
   font-family: 'RedOctober';
-  fill: #eee;
+  fill: #ccc;
 }
 .axis .label {
   text-anchor: middle;
-  fill: #fe7;
+  fill: #ec6;
 }
 .axis path,
 .axis line {
   fill: none;
-  stroke: #eee;
+  stroke: #555;
   shape-rendering: crispEdges;
 }
 g.unit text {
   font-size: 11px;
   fill: #fff;
-  font-family: sans-serif;
+  font-family: monospace;
   -webkit-transform: translate(5px, -5px);
 }
 g.unit .range {
@@ -72,4 +72,22 @@ g.unit .range {
 .allies_soviet circle,
 .allies_soviet ellipse {
   fill: #aaa;
+}
+.tooltip {
+  position: absolute;
+  background: rgba(0,0,0,0.9);
+  padding: 10px;
+  max-width: 300px;
+}
+.tooltip.hidden {
+  visibility: hidden;
+}
+.tooltip h2 {
+  margin: 0 0 3px;
+  font-family: monospace;
+  font-size: 1em;
+}
+.tooltip div {
+  color: #aaa;
+  font-family: monospace;
 }
