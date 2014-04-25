@@ -1,12 +1,14 @@
 var d3 = require('d3');
 var svg = d3.select('svg');
+var Tooltip = require('./tooltip');
+
 
 var margin = { top: 30, left: 80, right: 30, bottom: 30 };
 var width = window.innerWidth;
 var height = svg.attr('height');
-
 var buildings = ['tent', 'barr', 'ftur', 'weap', 'tsla', 'dome', 'hpad', 'afld',
                  'fix', 'spen', 'syrd', 'proc', 'weap', 'atek', 'stek', 'pdox'];
+
 
 var dataAccessors = {
     'Health': function(d) { return d.Health.HP },
@@ -46,8 +48,7 @@ var xFn = function(d) {
 var yFn = function(d) { return (d.Valued.Cost) };
 
 // Simple html-based tooltips, shown on unit hover
-var tooltip = d3.select('body')
-                .append('div').attr('class', 'tooltip hidden');
+var tooltip = new Tooltip();
 
 function renderChart(data) {
     // var buildings = data.map(function(d) { return d.Buildable.Prerequisites; });
@@ -135,15 +136,8 @@ function renderChart(data) {
         // Tooltip on hover:
         groups
             .on('mouseover', function(d) {
-                var svgNode = svg.node();
-                tooltip.select('div').remove();
-                tooltip
-                    .classed('hidden', false)
-                    .style('left', (svgNode.offsetLeft + xValueFn(d)) + 'px')
-                    .style('top', (svgNode.offsetTop + yValueFn(d)) + 'px');
-
-                tooltip.append('div')
-                    .text(d.Tooltip.Description.replace(/\\n/g, ' '));
+                tooltip.render(d);
+                tooltip.positionOnSVG(svg.node(), xValueFn(d), yValueFn(d));
             })
             .on('mouseout', function(d) { tooltip.classed('hidden', true); });
     }
