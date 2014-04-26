@@ -28,10 +28,15 @@ function renderChart(data) {
     xAxis.scale(xScale).orient('bottom');
     xAxisEl.call(xAxis);
 
-    yScale.domain([0, d3.max(data, RA.getCost)])
-          .range([height - margin.top - margin.bottom, margin.top]);
-    yAxis.scale(yScale).orient('left');
-    yAxisEl.call(yAxis);
+    // If the y scale hasn't been initialized yet, set it up.
+    // Don't re-scale on every draw, since that makes comparisions more difficult
+    var yScaleInitialized = yScale.range()[1] !== 1;
+    if (!yScaleInitialized) {
+        yScale.domain([0, d3.max(data, RA.getCost)])
+              .range([height - margin.top - margin.bottom, margin.top]);
+        yAxis.scale(yScale).orient('left');
+        yAxisEl.call(yAxis);
+    }
 
     var xValueFn = function(d, i) { return xScale(RA.getPrereqs(d)); };
     var yValueFn = function(d, i) { return yScale(RA.getCost(d)); };
