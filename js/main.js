@@ -1,25 +1,14 @@
 var d3 = require('d3');
 var svg = d3.select('svg');
+var RA = require('./ra');
 var Tooltip = require('./tooltip');
 
 
 var margin = { top: 30, left: 80, right: 30, bottom: 30 };
 var width = window.innerWidth;
 var height = svg.attr('height');
-var buildings = ['tent', 'barr', 'ftur', 'weap', 'tsla', 'dome', 'hpad', 'afld',
-                 'fix', 'spen', 'syrd', 'proc', 'weap', 'atek', 'stek', 'pdox'];
 
-
-var dataAccessors = {
-    'Health': function(d) { return d.Health.HP },
-    'Speed': function(d) { return d.speed },
-    'Vision': function(d) {
-        var raw = (d.RevealsShroud || {}).Range || 0;
-        return raw.toString().split('c')[0];    // Handle values of the form "5c0" (take the first number)
-    }
-};
-
-var xScale = d3.scale.ordinal().domain(buildings);
+var xScale = d3.scale.ordinal().domain(RA.buildings);
 var yScale = d3.scale.linear();
 
 // Setup axes:
@@ -29,23 +18,6 @@ var xAxisEl = svg.append('g').attr('class', 'x axis')
                 .attr('transform', 'translate(0,' + (height - margin.top - margin.bottom) + ')');
 var yAxisEl = svg.append('g').attr('class', 'y axis')
                 .attr('transform', 'translate(' + margin.left + ',0)');
-
-
-var xFn = function(d) {
-    var prereqs = d.Buildable.Prerequisites;
-    if (!prereqs) {
-        if (d.Inherits === '^Vehicle' || d.Inherits === '^Tank') return 'weap';
-        if (d.Inherits === '^Infantry') return 'tent';
-        if (d.Inherits === '^Plane') return 'afld';
-        if (d.Inherits === '^Ship') return 'syrd';
-        else return;
-    }
-    if (prereqs === 'techcenter') return 'atek';    // Exception for tanya
-    var items = prereqs.split(',');
-    return items[items.length - 1].trim();
-};
-
-var yFn = function(d) { return (d.Valued.Cost) };
 
 // Simple html-based tooltips, shown on unit hover
 var tooltip = new Tooltip();
@@ -60,13 +32,13 @@ function renderChart(data) {
     xAxis.scale(xScale).orient('bottom');
     xAxisEl.call(xAxis);
 
-    yScale.domain([0, d3.max(data, yFn)])
+    yScale.domain([0, d3.max(data, RA.getCost)])
           .range([height - margin.top - margin.bottom, margin.top]);
     yAxis.scale(yScale).orient('left');
     yAxisEl.call(yAxis);
 
-    var xValueFn = function(d, i) { return xScale(xFn(d,i)); };
-    var yValueFn = function(d, i) { return yScale(yFn(d,i)); };
+    var xValueFn = function(d, i) { return xScale(RA.getPrereqs(d)); };
+    var yValueFn = function(d, i) { return yScale(RA.getCost(d)); };
     var keyFn = function(d) { return d.name };
     var groups = svg.selectAll('g.unit').data(data, keyFn);
     var isFirstRender = svg.selectAll('circle').empty();
@@ -117,14 +89,14 @@ function renderChart(data) {
             .transition().duration(1000)
             .attr('cx', xValueFn)
             .attr('cy', yValueFn)
-            .attr('ry', function(d) { return 2*dataAccessors.Vision(d); })
-            .attr('rx', function(d) { return dataAccessors.Speed(d)/8; });
+            .attr('ry', function(d) { return 2*RA.getVision(d); })
+            .attr('rx', function(d) { return RA.getSpeed(d)/8; });
 
         groups.select('circle.health')
             .transition().duration(1000)
             .attr('cx', xValueFn)
             .attr('cy', yValueFn)
-            .attr('r', function(d) { return 0.3*Math.sqrt(dataAccessors.Health(d)); });
+            .attr('r', function(d) { return 0.3*Math.sqrt(RA.getHealth(d)); });
 
         groups.select('text')
             .text(function(d) { return (d.Tooltip || {}).Name })
