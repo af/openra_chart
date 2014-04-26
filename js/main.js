@@ -19,14 +19,10 @@ var xAxisEl = svg.append('g').attr('class', 'x axis')
 var yAxisEl = svg.append('g').attr('class', 'y axis')
                 .attr('transform', 'translate(' + margin.left + ',0)');
 
-// Simple html-based tooltips, shown on unit hover
+// Simple html-based tooltip, shown on unit hover
 var tooltip = new Tooltip();
 
 function renderChart(data) {
-    // var buildings = data.map(function(d) { return d.Buildable.Prerequisites; });
-    // window.b = buildings;
-    // console.log(buildings)
-
     // Set up x/y scales and axes for the given data:
     xScale.rangePoints([margin.left, width - margin.left - margin.right], 0.5);
     xAxis.scale(xScale).orient('bottom');
@@ -77,13 +73,7 @@ function renderChart(data) {
     setAttrs(groups);
 
     function setAttrs(groups) {
-        groups
-            .attr('class', function(d) {
-                var owner = (d.Buildable || {}).Owner;
-                var tokens = owner.replace(/\s/g, '').split(',');  // handle 'allies,soviet', 'soviet,allies' cases
-                tokens.sort();
-                return 'unit ' + tokens.join('_');
-            });
+        groups.attr('class', RA.getFactionClassname);
 
         groups.select('ellipse.range')
             .transition().duration(1000)
@@ -120,16 +110,8 @@ function updateChart() {
     var faction = document.querySelector('[name=faction]').value;
     var unitType = document.querySelector('[name=unit_type]').value;
 
-    var units = window.units[unitList].filter(function(unit) {
-        if (faction === 'all') return true;
-        else return unit.Buildable.Owner === faction;
-    }).filter(function(unit) {
-        var queueName = unit.Buildable.Queue;
-
-        if (unitType === 'all') return true;
-        else if (unitType === 'air') return queueName === 'Helicopter' || queueName === 'Plane';
-        else return queueName.match(new RegExp(unitType + '$', 'i'));
-    });
+    var units = window.units[unitList].filter(RA.getFilterForFaction(faction))
+                                      .filter(RA.getFilterForType(unitType));
     renderChart(units);
 }
 
