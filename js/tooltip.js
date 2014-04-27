@@ -1,4 +1,5 @@
 var d3 = require('d3');
+var RA = require('./ra');
 
 var Tooltip = function() {
     this.el = d3.select('body')
@@ -6,6 +7,10 @@ var Tooltip = function() {
 
     this.el.append('h2').attr('class', 'name');
     this.el.append('div').attr('class', 'description');
+    this.el.append('div').attr('class', 'cost');
+    this.el.append('div').attr('class', 'health');
+    this.el.append('div').attr('class', 'speed');
+    this.el.append('div').attr('class', 'vision');
 };
 
 Tooltip.prototype = {
@@ -17,8 +22,12 @@ Tooltip.prototype = {
 
     render: function(d) {
         var dataMap = {
-            '.name': d.Tooltip.Name,
-            '.description': d.Tooltip.Description.replace(/\\n/g, ' '),
+            '.name': RA.getName(d),
+            '.description': RA.getDescription(d),
+            '.cost': '$' + RA.getCost(d),
+            '.health': 'Health: ' + RA.getHealth(d),
+            '.speed': 'Speed: ' + RA.getSpeed(d),
+            '.vision': 'Vision: ' + RA.getVision(d)
         };
 
         for (var selector in dataMap) {

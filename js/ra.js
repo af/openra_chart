@@ -4,6 +4,8 @@ module.exports = {
 
     // General functions to get a metric from the OpenRA-specific json data
     getCost: function(unit) { return (unit.Valued.Cost) },
+    getName: function(unit) { return unit.Tooltip.Name },
+    getDescription: function(unit) { return unit.Tooltip.Description.replace(/\\n/g, ' ') },
     getHealth: function(unit) { return unit.Health.HP },
     getSpeed: function(unit) { return unit.speed },
     getVision: function(unit) {
