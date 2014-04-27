@@ -1,16 +1,22 @@
 var d3 = require('d3');
 var RA = require('./ra');
 
+// Tiny templating helper
+function t(str, ctx) {
+    for(var name in ctx) str = str.replace(new RegExp('{'+name+'}', 'g'), ctx[name]);
+    return str;
+}
+
+var template = '<h2>{name}</h2>' +
+                '<div class="description">{description}</div>' +
+                '<div class="cost">${cost}</div>' +
+                '<div><b>Health:</b> {health}</div>' +
+                '<div><b>Speed:</b> {speed}</div>' +
+                '<div><b>Vision:</b> {vision}</div>';
+
 var Tooltip = function() {
     this.el = d3.select('body')
                 .append('div').attr('class', 'tooltip hidden');
-
-    this.el.append('h2').attr('class', 'name');
-    this.el.append('div').attr('class', 'description');
-    this.el.append('div').attr('class', 'cost');
-    this.el.append('div').attr('class', 'health');
-    this.el.append('div').attr('class', 'speed');
-    this.el.append('div').attr('class', 'vision');
 };
 
 Tooltip.prototype = {
@@ -21,18 +27,16 @@ Tooltip.prototype = {
     },
 
     render: function(d) {
-        var dataMap = {
-            '.name': RA.getName(d),
-            '.description': RA.getDescription(d),
-            '.cost': '$' + RA.getCost(d),
-            '.health': 'Health: ' + RA.getHealth(d),
-            '.speed': 'Speed: ' + RA.getSpeed(d),
-            '.vision': 'Vision: ' + RA.getVision(d)
-        };
+        var contents = t(template, {
+            name: RA.getName(d),
+            description: RA.getDescription(d),
+            cost: RA.getCost(d),
+            health: RA.getHealth(d),
+            speed: RA.getSpeed(d),
+            vision: RA.getVision(d)
+        });
 
-        for (var selector in dataMap) {
-            this.el.select(selector).text(dataMap[selector]);
-        }
+        this.el.html(contents);
     },
 
     hide: function() {
