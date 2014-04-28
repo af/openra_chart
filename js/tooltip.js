@@ -14,6 +14,9 @@ var template = '<h2>{name}</h2>' +
                 '<div><b>Speed:</b> {speed}</div>' +
                 '<div><b>Vision:</b> {vision}</div>';
 
+// Sets the position of the tooltip relative to the svg <g> element
+var OFFSET = { x: 12, y: -20};
+
 var Tooltip = function() {
     this.el = d3.select('body')
                 .append('div').attr('class', 'tooltip hidden');
@@ -22,8 +25,8 @@ var Tooltip = function() {
 Tooltip.prototype = {
     positionOnSVG: function(svgNode, x, y) {
         this.el.classed('hidden', false)
-            .style('left', (svgNode.offsetLeft + x) + 'px')
-            .style('top', (svgNode.offsetTop + y) + 'px');
+            .style('left', (svgNode.offsetLeft + x + OFFSET.x) + 'px')
+            .style('top', (svgNode.offsetTop + y + OFFSET.y) + 'px');
     },
 
     render: function(d) {
