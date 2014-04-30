@@ -47,11 +47,19 @@ module.exports = {
         };
     },
 
+    getFaction: function(unit) {
+        return (unit.Buildable || {}).Owner;
+    },
+
     // Return a string, to be used for a DOM class, based on the unit's faction
     getFactionClassname: function(unit) {
         var owner = (unit.Buildable || {}).Owner;
         var tokens = owner.replace(/\s/g, '').split(',');  // handle 'allies,soviet', 'soviet,allies' cases
         tokens.sort();
         return 'unit ' + tokens.join('_');
+    },
+
+    getWeaponName: function(unit) {
+        return (unit.Armament || unit['Armament@PRIMARY'] || {}).Weapon;
     }
 };

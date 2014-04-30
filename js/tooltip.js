@@ -3,16 +3,19 @@ var RA = require('./ra');
 
 // Tiny templating helper
 function t(str, ctx) {
-    for(var name in ctx) str = str.replace(new RegExp('{'+name+'}', 'g'), ctx[name]);
+    for(var name in ctx) str = str.replace(new RegExp('{'+name+'}', 'g'), ctx[name] || '');
     return str;
 }
 
 var template = '<h2>{name}</h2>' +
                 '<div class="description">{description}</div>' +
                 '<div class="cost">${cost}</div>' +
-                '<div><b>Health:</b> {health}</div>' +
+                '<div><b>Health:</b> {health}HP</div>' +
                 '<div><b>Speed:</b> {speed}</div>' +
-                '<div><b>Vision:</b> {vision}</div>';
+                '<div><b>Vision:</b> {vision}</div>' +
+                '<div><b>Weapon:</b> {weapon}</div>' +
+                '<div><b>Prereqs:</b> {prereqs}</div>' +
+                '<div><b>Faction:</b> {faction}</div>';
 
 // Sets the position of the tooltip relative to the svg <g> element
 var OFFSET = { x: 12, y: -20};
@@ -34,6 +37,9 @@ Tooltip.prototype = {
             name: RA.getName(d),
             description: RA.getDescription(d),
             cost: RA.getCost(d),
+            prereqs: RA.getPrereqs(d),
+            faction: RA.getFaction(d),
+            weapon: RA.getWeaponName(d),
             health: RA.getHealth(d),
             speed: RA.getSpeed(d),
             vision: RA.getVision(d)
