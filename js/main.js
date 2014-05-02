@@ -94,7 +94,7 @@ function renderChart(data) {
             .attr('r', function(d) { return 0.3*Math.sqrt(RA.getHealth(d)); });
 
         groups.select('text')
-            .text(function(d) { return (d.Tooltip || {}).Name })
+            .text(RA.getName)
             .transition().duration(1000)
             .style('opacity', 1)
             .attr('x', xValueFn)
