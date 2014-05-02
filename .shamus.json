@@ -19,7 +19,7 @@
         },
         {
             "name": "JSHint",
-            "command": "jshint js/main.js build.js",
+            "command": "jshint js/*.js ra2json.js",
             "parser": "exitcode",
             "fileMatcher": "js\/.+\\.js$"
         },

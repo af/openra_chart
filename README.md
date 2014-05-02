@@ -15,6 +15,12 @@ You can use `npm run build_js` and `npm run build_css`, respectively, or you
 can use [shamus](https://github.com/af/shamus) to run them automatically as you
 edit files.
 
+Adding a release
+---------------------
+
+Check out `ra2json.js`, a node.js script that converts OpenRA's YAML(ish)
+config files into unit json data.
+
 
 Note on branches
 ----------------
