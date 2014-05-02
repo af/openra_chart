@@ -18,7 +18,7 @@ var template = '<h2>{name}</h2>' +
                 '<div><b>Faction:</b> {faction}</div>';
 
 // Sets the position of the tooltip relative to the svg <g> element
-var OFFSET = { x: 16, y: -20};
+var OFFSET = { x: 16, y: -90};
 
 var Tooltip = function() {
     this.el = d3.select('body')

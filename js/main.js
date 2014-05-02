@@ -4,7 +4,7 @@ var RA = require('./ra');
 var Tooltip = require('./tooltip');
 
 
-var margin = { top: 30, left: 80, right: 30, bottom: 30 };
+var margin = { top: 30, left: 80, right: 60, bottom: 40 };
 var width = window.innerWidth;
 var height = svg.attr('height');
 
@@ -67,7 +67,7 @@ function renderChart(data) {
             .attr('class', 'label')
             .text('Building dependencies')
             .attr('x', width/2)
-            .attr('y', margin.bottom + 10);
+            .attr('y', margin.bottom);
         yAxisEl.append('text')
             .attr('class', 'label')
             .text('Cost ($)')
