@@ -38,8 +38,8 @@ function renderChart(data) {
         yAxisEl.call(yAxis);
     }
 
-    var xValueFn = function(d, i) { return xScale(RA.getPrereqs(d)); };
-    var yValueFn = function(d, i) { return yScale(RA.getCost(d)); };
+    var xValueFn = function(d, i) { return xScale(RA.getPrereqs(d)) + (d.layoutOffset || 0); };
+    var yValueFn = function(d, i) { return yScale(RA.getCost(d)) + (d.layoutOffset || 0); };
     var keyFn = function(d) { return d.name };
     var groups = svg.selectAll('g.unit').data(data, keyFn);
     var isFirstRender = svg.selectAll('circle').empty();
@@ -78,8 +78,20 @@ function renderChart(data) {
     setAttrs(groups);
 
     function setAttrs(groups) {
-        groups.attr('class', RA.getFactionClassname);
+        var occupiedPoints = {};
 
+        groups.attr('class', RA.getFactionClassname)
+            .each(function(d) {
+                // Some units have the same x/y coords, and thus obscure each other.
+                // When this happens, add d.layoutOffset to show them at slightly different places
+                var pointKey = xValueFn(d) + '.' + yValueFn(d);
+                if (occupiedPoints[pointKey]) {
+                    d.layoutOffset = 10*occupiedPoints[pointKey];
+                    occupiedPoints[pointKey] += 1;
+                } else {
+                    occupiedPoints[pointKey] = 1;
+                }
+            });
         groups.select('ellipse.range')
             .transition().duration(1000)
             .attr('cx', xValueFn)
