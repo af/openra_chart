@@ -59,6 +59,7 @@ exports.render = function render(data) {
 
     if (isFirstRender) {
         groups = groups.enter().append('g').attr('class', 'unit');
+        groups.append('circle').attr('class', 'hover');
         groups.append('ellipse').attr('class', 'range');
         groups.append('circle').attr('class', 'health');
         groups.append('text');
@@ -105,6 +106,12 @@ exports.render = function render(data) {
             .attr('cx', xValueFn)
             .attr('cy', yValueFn)
             .attr('r', function(d) { return 0.3*Math.sqrt(RA.getHealth(d)); });
+
+        // Extra circle to expand hover area for small units:
+        groups.select('circle.hover')
+            .attr('cx', xValueFn)
+            .attr('cy', yValueFn)
+            .attr('r', 10);
 
         groups.select('text')
             .text(RA.getName)
