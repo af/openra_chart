@@ -1,0 +1,37 @@
+.axis
+    text
+        font-size: 12px
+        font-family: $defaultFont
+        fill: #ccc
+
+    .label
+        text-anchor: middle
+        fill: $accentColor
+
+    path, line
+        fill: none
+        stroke: #555
+        shape-rendering: crispEdges
+
+g.unit
+    text
+        font-size: 11px
+        fill: $textColor
+        font-family: monospace
+        pointer-events: none
+        -webkit-transform: translate(5px, -5px)
+
+    .range
+        opacity: 0.5
+
+.allies
+    circle, ellipse
+        fill: $alliesColor
+
+.soviet
+    circle, ellipse
+        fill: $sovietColor
+
+.allies_soviet
+    circle, ellipse
+        fill: $neutralColor
