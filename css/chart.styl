@@ -13,16 +13,18 @@
         stroke: #555
         shape-rendering: crispEdges
 
-g.unit
-    text
-        font-size: 11px
-        fill: $textColor
-        font-family: monospace
-        pointer-events: none
-        -webkit-transform: translate(5px, -5px)
+circle, ellipse
+    fill: $neutralColor
 
-    .range
+    &.range
         opacity: 0.5
+
+g.unit text
+    font-size: 11px
+    fill: $textColor
+    font-family: monospace
+    pointer-events: none
+    -webkit-transform: translate(5px, -5px)
 
 .allies
     circle, ellipse
@@ -32,9 +34,19 @@ g.unit
     circle, ellipse
         fill: $sovietColor
 
-.allies_soviet
-    circle, ellipse
-        fill: $neutralColor
-
 circle.hover
     fill: transparent
+
+.legend
+    rect
+        fill: rgba(#eee, 0.1)
+    line
+        stroke: #555
+        shape-rendering: crispEdges
+    text
+        fill: #aaa
+        font-family: sans-serif
+        font-size: 11px
+
+        &.center
+            text-anchor: middle

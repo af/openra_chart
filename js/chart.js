@@ -23,6 +23,28 @@ var yAxisEl = svg.append('g').attr('class', 'y axis')
 var tooltip = new Tooltip();
 
 
+// Draw a simple legend in the top corner of the graph:
+exports.drawLegend = function drawLegend() {
+    var vision = 15;
+    var speed = 20;
+    var health = 7;
+    var g = svg.append('g').attr('class', 'legend')
+                .attr('transform', 'translate(140, 70)');
+
+    g.append('ellipse').attr('class', 'range').attr({rx: speed, ry: vision });
+    g.append('circle').attr('class', 'health').attr('r', health);
+
+    g.append('line').attr({ x1: -speed, x2: speed, y1: -(vision + 5), y2: -(vision + 5)});
+    g.append('text').attr('class', 'center').text('vision').attr({ x: 0, y: -(vision + 8) });
+
+    g.append('line').attr({ x1: speed + 5, x2: speed + 5, y1: -vision, y2: vision});
+    g.append('text').text('speed').attr({ x: speed + 8, y:  0 });
+
+    g.append('line').attr({ x1: -health, x2: health, y1: (vision + 5), y2: (vision + 5)});
+    g.append('text').attr('class', 'center').text('health').attr({ x: 0, y: (vision + 17) });
+};
+
+
 exports.render = function render(data) {
     // Set up x/y scales and axes for the given data:
     xScale.rangePoints([margin.left, width - margin.left - margin.right], 0.5);

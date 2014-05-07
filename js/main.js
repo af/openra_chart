@@ -38,3 +38,4 @@ d3.select('select[name=unit_type]')
         .text(function(d) { return d });
 
 updateChart();
+chart.drawLegend();
