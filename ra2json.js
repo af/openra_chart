@@ -3,7 +3,7 @@
 // the OpenRA release that we're scraping.
 //
 // Example Usage:
-// node build.js ../openra/mods/ra/rules release-xxxxxx
+// node ra2json.js ../openra/mods/ra/rules release-xxxxxx
 
 var fs = require('fs');
 var path = require('path');
