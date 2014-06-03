@@ -35,10 +35,10 @@ exports.drawLegend = function drawLegend() {
     g.append('circle').attr('class', 'health').attr('r', health);
 
     g.append('line').attr({ x1: -speed, x2: speed, y1: -(vision + 5), y2: -(vision + 5)});
-    g.append('text').attr('class', 'center').text('vision').attr({ x: 0, y: -(vision + 8) });
+    g.append('text').attr('class', 'center').text('speed').attr({ x: 0, y: -(vision + 8) });
 
     g.append('line').attr({ x1: speed + 5, x2: speed + 5, y1: -vision, y2: vision});
-    g.append('text').text('speed').attr({ x: speed + 8, y:  0 });
+    g.append('text').text('vision').attr({ x: speed + 8, y:  0 });
 
     g.append('line').attr({ x1: -health, x2: health, y1: (vision + 5), y2: (vision + 5)});
     g.append('text').attr('class', 'center').text('health').attr({ x: 0, y: (vision + 17) });
