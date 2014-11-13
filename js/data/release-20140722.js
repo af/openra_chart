@@ -1,11 +1,10 @@
-units=(window.units||{}); units["playtest-20140405"]=[
+units=(window.units||{}); units["release-20140722"]=[
   {
     "Inherits": "^Plane",
     "Buildable": {
       "Queue": "Plane",
-      "BuildPaletteOrder": 100,
-      "Prerequisites": "afld, stek",
-      "Owner": "soviet",
+      "BuildPaletteOrder": 50,
+      "Prerequisites": "afld, stek, ~techlevel.unrestricted",
       "Hotkey": "m"
     },
     "Valued": {
@@ -53,7 +52,7 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "IronCurtainable": null,
     "ReturnOnIdle": null,
     "Selectable": {
-      "Bounds": 444000
+      "Bounds": 402901
     },
     "Contrail@1": {
       "Offset": "-598,-683,0"
@@ -76,9 +75,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Plane",
     "Buildable": {
       "Queue": "Plane",
-      "BuildPaletteOrder": 50,
-      "Prerequisites": "afld",
-      "Owner": "soviet",
+      "BuildPaletteOrder": 30,
+      "Prerequisites": "afld, ~techlevel.medium",
       "Hotkey": "y"
     },
     "Valued": {
@@ -133,6 +131,9 @@ units=(window.units||{}); units["playtest-20140405"]=[
     },
     "IronCurtainable": null,
     "ReturnOnIdle": null,
+    "Selectable": {
+      "Bounds": 302802
+    },
     "WithMuzzleFlash": null,
     "Contrail": {
       "Offset": -85300
@@ -152,9 +153,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Helicopter",
     "Buildable": {
       "Queue": "Helicopter",
-      "BuildPaletteOrder": 110,
-      "Prerequisites": "hpad",
-      "Owner": "allies",
+      "BuildPaletteOrder": 10,
+      "Prerequisites": "hpad, ~techlevel.medium",
       "Hotkey": "t"
     },
     "Valued": {
@@ -178,7 +178,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
       "InitialFacing": 0,
       "ROT": 5,
       "Speed": 112,
-      "LandableTerrainTypes": "Clear,Rough,Road,Ore,Beach"
+      "LandableTerrainTypes": "Clear,Rough,Road,Ore,Beach",
+      "AltitudeVelocity": "0c100"
     },
     "RenderUnit": null,
     "WithRotor@PRIMARY": {
@@ -208,9 +209,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Helicopter",
     "Buildable": {
       "Queue": "Helicopter",
-      "BuildPaletteOrder": 90,
-      "Prerequisites": "hpad, atek",
-      "Owner": "allies",
+      "BuildPaletteOrder": 40,
+      "Prerequisites": "hpad, atek, ~techlevel.unrestricted",
       "Hotkey": "l"
     },
     "Valued": {
@@ -261,6 +261,9 @@ units=(window.units||{}); units["playtest-20140405"]=[
       "Ammo": 8
     },
     "IronCurtainable": null,
+    "Selectable": {
+      "Bounds": 362800
+    },
     "LeavesHusk": {
       "HuskActor": "HELI.Husk"
     },
@@ -275,9 +278,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Helicopter",
     "Buildable": {
       "Queue": "Helicopter",
-      "BuildPaletteOrder": 90,
-      "Prerequisites": "hpad",
-      "Owner": "allies",
+      "BuildPaletteOrder": 20,
+      "Prerequisites": "hpad, ~techlevel.medium",
       "Hotkey": "h"
     },
     "Valued": {
@@ -349,9 +351,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Infantry",
     "Buildable": {
       "Queue": "Infantry",
-      "BuildPaletteOrder": 30,
-      "Prerequisites": "barr",
-      "Owner": "soviet",
+      "BuildPaletteOrder": 50,
+      "Prerequisites": "~barr, ~techlevel.infonly",
       "Hotkey": "o"
     },
     "Valued": {
@@ -394,7 +395,7 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Buildable": {
       "Queue": "Infantry",
       "BuildPaletteOrder": 10,
-      "Owner": "allies,soviet",
+      "Prerequisites": "~techlevel.infonly",
       "Hotkey": "i"
     },
     "Valued": {
@@ -436,9 +437,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Infantry",
     "Buildable": {
       "Queue": "Infantry",
-      "BuildPaletteOrder": 10,
-      "Owner": "soviet",
-      "Prerequisites": "barr",
+      "BuildPaletteOrder": 20,
+      "Prerequisites": "~barr, ~techlevel.infonly",
       "Hotkey": "g"
     },
     "Valued": {
@@ -486,8 +486,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Infantry",
     "Buildable": {
       "Queue": "Infantry",
-      "BuildPaletteOrder": 20,
-      "Owner": "allies,soviet",
+      "BuildPaletteOrder": 30,
+      "Prerequisites": "~techlevel.infonly",
       "Hotkey": "r"
     },
     "Valued": {
@@ -533,9 +533,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Infantry",
     "Buildable": {
       "Queue": "Infantry",
-      "BuildPaletteOrder": 60,
-      "Prerequisites": "ftur",
-      "Owner": "soviet",
+      "BuildPaletteOrder": 70,
+      "Prerequisites": "~barr, ftur, ~techlevel.low",
       "Hotkey": "t"
     },
     "Valued": {
@@ -578,8 +577,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Infantry",
     "Buildable": {
       "Queue": "Infantry",
-      "BuildPaletteOrder": 50,
-      "Owner": "soviet,allies",
+      "BuildPaletteOrder": 60,
+      "Prerequisites": "~techlevel.infonly",
       "Hotkey": "e"
     },
     "Valued": {
@@ -622,9 +621,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Infantry",
     "Buildable": {
       "Queue": "Infantry",
-      "BuildPaletteOrder": 60,
-      "Prerequisites": "dome, tent",
-      "Owner": "allies",
+      "BuildPaletteOrder": 90,
+      "Prerequisites": "dome, ~tent, ~techlevel.medium",
       "Hotkey": "p"
     },
     "Valued": {
@@ -673,9 +671,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Infantry",
     "Buildable": {
       "Queue": "Infantry",
-      "BuildPaletteOrder": 110,
-      "Prerequisites": "techcenter",
-      "Owner": "allies",
+      "BuildPaletteOrder": 120,
+      "Prerequisites": "~tent, atek, ~techlevel.unrestricted",
       "Hotkey": "y",
       "BuildLimit": 1
     },
@@ -730,9 +727,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Infantry",
     "Buildable": {
       "Queue": "Infantry",
-      "BuildPaletteOrder": 20,
-      "Owner": "allies",
-      "Prerequisites": "tent",
+      "BuildPaletteOrder": 40,
+      "Prerequisites": "~tent, ~techlevel.infonly",
       "Hotkey": "m"
     },
     "Valued": {
@@ -780,9 +776,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Infantry",
     "Buildable": {
       "Queue": "Infantry",
-      "BuildPaletteOrder": 70,
-      "Owner": "allies",
-      "Prerequisites": "fix",
+      "BuildPaletteOrder": 100,
+      "Prerequisites": "~tent, fix, ~techlevel.medium",
       "Hotkey": "c"
     },
     "Valued": {
@@ -833,9 +828,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Infantry",
     "Buildable": {
       "Queue": "Infantry",
-      "BuildPaletteOrder": 90,
-      "Owner": "soviet",
-      "Prerequisites": "fix",
+      "BuildPaletteOrder": 110,
+      "Prerequisites": "~barr, fix, ~techlevel.medium",
       "Hotkey": "j"
     },
     "Valued": {
@@ -850,7 +844,7 @@ units=(window.units||{}); units["playtest-20140405"]=[
       "Bounds": "12,17,0,-9"
     },
     "Health": {
-      "HP": 80
+      "HP": 50
     },
     "Mobile": {
       "Speed": 56
@@ -873,9 +867,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Infantry",
     "Buildable": {
       "Queue": "Infantry",
-      "BuildPaletteOrder": 70,
-      "Prerequisites": "stek,tsla",
-      "Owner": "soviet",
+      "BuildPaletteOrder": 130,
+      "Prerequisites": "~barr, stek, tsla, ~techlevel.unrestricted",
       "Hotkey": "l"
     },
     "Valued": {
@@ -907,11 +900,12 @@ units=(window.units||{}); units["playtest-20140405"]=[
       "Weapon": "PortaTesla"
     },
     "AttackFrontal": null,
-    "RenderInfantry": {
+    "TakeCover": null,
+    "-RenderInfantry": null,
+    "RenderInfantryProne": {
       "IdleAnimations": "idle1,idle2",
       "StandAnimations": "stand,stand2"
     },
-    "-CrushableInfantry": null,
     "unitClass": "infantry",
     "name": "SHOK",
     "speed": 56
@@ -928,8 +922,7 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Buildable": {
       "Queue": "Infantry",
       "BuildPaletteOrder": 80,
-      "Owner": "soviet",
-      "Prerequisites": "dome",
+      "Prerequisites": "~barr, dome, ~techlevel.medium",
       "Hotkey": "h"
     },
     "Selectable": {
@@ -972,11 +965,6 @@ units=(window.units||{}); units["playtest-20140405"]=[
       "UncloakSound": null,
       "UncloakOnMove": "yes"
     },
-    "Captures": {
-      "CaptureTypes": "CivilianBuilding",
-      "Sabotage": "no",
-      "SabotageHPRemoval": 0
-    },
     "DetectCloaked": {
       "Range": 6
     },
@@ -985,12 +973,84 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "speed": 56
   },
   {
+    "Inherits": "^Infantry",
+    "Valued": {
+      "Cost": 100
+    },
+    "Tooltip": {
+      "Name": "Zombie",
+      "Description": "Slow undead. Attacks in close combat."
+    },
+    "Buildable": {
+      "Queue": "Infantry",
+      "BuildPaletteOrder": 200,
+      "Prerequisites": "~bio"
+    },
+    "Selectable": {
+      "Voice": "AntVoice",
+      "Bounds": "12,17,0,-9"
+    },
+    "Health": {
+      "HP": 250
+    },
+    "Mobile": {
+      "Speed": 42
+    },
+    "AutoTarget": {
+      "ScanRadius": 5
+    },
+    "AttackFrontal": null,
+    "Armament": {
+      "Weapon": "claw"
+    },
+    "unitClass": "infantry",
+    "name": "Zombie",
+    "speed": 42
+  },
+  {
+    "Inherits": "^Infantry",
+    "Valued": {
+      "Cost": 300
+    },
+    "Tooltip": {
+      "Name": "Giant Ant",
+      "Description": "Irradiated insect that grew oversize."
+    },
+    "Buildable": {
+      "Queue": "Infantry",
+      "BuildPaletteOrder": 1954,
+      "Prerequisites": "~bio"
+    },
+    "Selectable": {
+      "Voice": "AntVoice",
+      "Bounds": "30,30,0,-2"
+    },
+    "Health": {
+      "HP": 750,
+      "Radius": 469
+    },
+    "Mobile": {
+      "Speed": 99,
+      "ROT": 12,
+      "SharesCell": "no"
+    },
+    "AutoTarget": {
+      "ScanRadius": 5
+    },
+    "AttackFrontal": null,
+    "Armament": {
+      "Weapon": "mandible"
+    },
+    "unitClass": "infantry",
+    "name": "Ant",
+    "speed": 99
+  },
+  {
     "Inherits": "^Ship",
     "Buildable": {
       "Queue": "Ship",
-      "BuildPaletteOrder": 50,
-      "Prerequisites": "spen",
-      "Owner": "soviet",
+      "BuildPaletteOrder": 30,
+      "Prerequisites": "~spen, ~techlevel.medium",
       "Hotkey": "u"
     },
     "Valued": {
@@ -1046,6 +1106,10 @@ units=(window.units||{}); units["playtest-20140405"]=[
       "Range": 4
     },
     "RenderDetectionCircle": null,
+    "Explodes": {
+      "Weapon": "UnitExplodeSubmarine",
+      "EmptyWeapon": "UnitExplodeSubmarine"
+    },
     "unitClass": "ships",
     "name": "SS",
     "speed": 71
@@ -1055,8 +1119,7 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Buildable": {
       "Queue": "Ship",
       "BuildPaletteOrder": 60,
-      "Prerequisites": "spen,stek",
-      "Owner": "soviet",
+      "Prerequisites": "~spen, stek, ~techlevel.unrestricted",
       "Hotkey": "m"
     },
     "Valued": {
@@ -1112,6 +1175,10 @@ units=(window.units||{}); units["playtest-20140405"]=[
       "Range": 4
     },
     "RenderDetectionCircle": null,
+    "Explodes": {
+      "Weapon": "UnitExplodeSubmarine",
+      "EmptyWeapon": "UnitExplodeSubmarine"
+    },
     "unitClass": "ships",
     "name": "MSUB",
     "speed": 42
@@ -1120,9 +1187,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Ship",
     "Buildable": {
       "Queue": "Ship",
-      "BuildPaletteOrder": 70,
-      "Prerequisites": "syrd,dome",
-      "Owner": "allies",
+      "BuildPaletteOrder": 40,
+      "Prerequisites": "~syrd, dome, ~techlevel.medium",
       "Hotkey": "r"
     },
     "Valued": {
@@ -1174,6 +1240,10 @@ units=(window.units||{}); units["playtest-20140405"]=[
       "Range": 4
     },
     "RenderDetectionCircle": null,
+    "Explodes": {
+      "Weapon": "UnitExplodeShip",
+      "EmptyWeapon": "UnitExplodeShip"
+    },
     "unitClass": "ships",
     "name": "DD",
     "speed": 85
@@ -1182,9 +1252,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Ship",
     "Buildable": {
       "Queue": "Ship",
-      "BuildPaletteOrder": 100,
-      "Prerequisites": "syrd,atek",
-      "Owner": "allies",
+      "BuildPaletteOrder": 50,
+      "Prerequisites": "~syrd, atek, ~techlevel.unrestricted",
       "Hotkey": "c"
     },
     "Valued": {
@@ -1250,6 +1319,10 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Chronoshiftable": null,
     "IronCurtainable": null,
     "RepairableNear": null,
+    "Explodes": {
+      "Weapon": "UnitExplodeShip",
+      "EmptyWeapon": "UnitExplodeShip"
+    },
     "unitClass": "ships",
     "name": "CA",
     "speed": 42
@@ -1258,8 +1331,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Ship",
     "Buildable": {
       "Queue": "Ship",
-      "BuildPaletteOrder": 30,
-      "Owner": "allies,soviet",
+      "BuildPaletteOrder": 10,
+      "Prerequisites": "~techlevel.low",
       "Hotkey": "t"
     },
     "Valued": {
@@ -1292,6 +1365,10 @@ units=(window.units||{}); units["playtest-20140405"]=[
     },
     "IronCurtainable": null,
     "RepairableNear": null,
+    "Explodes": {
+      "Weapon": "UnitExplodeShip",
+      "EmptyWeapon": "UnitExplodeShip"
+    },
     "unitClass": "ships",
     "name": "LST",
     "speed": 113
@@ -1300,9 +1377,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Ship",
     "Buildable": {
       "Queue": "Ship",
-      "BuildPaletteOrder": 50,
-      "Prerequisites": "syrd",
-      "Owner": "allies",
+      "BuildPaletteOrder": 20,
+      "Prerequisites": "~syrd, ~techlevel.medium",
       "Hotkey": "b"
     },
     "Valued": {
@@ -1355,6 +1431,10 @@ units=(window.units||{}); units["playtest-20140405"]=[
       "Range": 4
     },
     "RenderDetectionCircle": null,
+    "Explodes": {
+      "Weapon": "UnitExplodeShip",
+      "EmptyWeapon": "UnitExplodeShip"
+    },
     "unitClass": "ships",
     "name": "PT",
     "speed": 128
@@ -1363,9 +1443,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Vehicle",
     "Buildable": {
       "Queue": "Vehicle",
-      "BuildPaletteOrder": 40,
-      "Prerequisites": "dome",
-      "Owner": "soviet",
+      "BuildPaletteOrder": 80,
+      "Prerequisites": "dome, ~vehicles.soviet, ~techlevel.medium",
       "Hotkey": "v"
     },
     "Valued": {
@@ -1395,7 +1474,7 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "AutoTarget": null,
     "Explodes": {
       "Weapon": "SCUD",
-      "EmptyWeapon": null
+      "EmptyWeapon": "UnitExplodeSmall"
     },
     "unitClass": "vehicles",
     "name": "V2RL",
@@ -1405,8 +1484,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Tank",
     "Buildable": {
       "Queue": "Vehicle",
-      "BuildPaletteOrder": 40,
-      "Owner": "allies",
+      "BuildPaletteOrder": 50,
+      "Prerequisites": "~vehicles.allies, ~techlevel.low",
       "Hotkey": "l"
     },
     "Valued": {
@@ -1458,9 +1537,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Tank",
     "Buildable": {
       "Queue": "Vehicle",
-      "BuildPaletteOrder": 60,
-      "Prerequisites": "fix",
-      "Owner": "allies",
+      "BuildPaletteOrder": 120,
+      "Prerequisites": "fix, ~vehicles.allies, ~techlevel.medium",
       "Hotkey": "m"
     },
     "Valued": {
@@ -1516,9 +1594,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Tank",
     "Buildable": {
       "Queue": "Vehicle",
-      "BuildPaletteOrder": 40,
-      "Prerequisites": "fix",
-      "Owner": "soviet",
+      "BuildPaletteOrder": 130,
+      "Prerequisites": "fix, ~vehicles.soviet, ~techlevel.medium",
       "Hotkey": "h"
     },
     "Valued": {
@@ -1574,16 +1651,15 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Tank",
     "Buildable": {
       "Queue": "Vehicle",
-      "BuildPaletteOrder": 100,
-      "Prerequisites": "fix,stek",
-      "Owner": "soviet",
+      "BuildPaletteOrder": 190,
+      "Prerequisites": "fix, stek, ~vehicles.soviet, ~techlevel.unrestricted",
       "Hotkey": "m"
     },
     "Valued": {
-      "Cost": 1800
+      "Cost": 2000
     },
     "CustomBuildTimeValue": {
-      "Value": 2225
+      "Value": 2500
     },
     "Tooltip": {
       "Name": "Mammoth Tank",
@@ -1634,8 +1710,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     },
     "SelfHealing": {
       "Step": 1,
-      "Ticks": 1,
-      "HealIfBelow": "80%",
+      "Ticks": 3,
+      "HealIfBelow": "50%",
       "DamageCooldown": 150
     },
     "Selectable": {
@@ -1649,9 +1725,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Tank",
     "Buildable": {
       "Queue": "Vehicle",
-      "BuildPaletteOrder": 80,
-      "Prerequisites": "dome",
-      "Owner": "allies",
+      "BuildPaletteOrder": 70,
+      "Prerequisites": "dome, ~vehicles.allies, ~techlevel.medium",
       "Hotkey": "r"
     },
     "Valued": {
@@ -1696,8 +1771,7 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Buildable": {
       "Queue": "Vehicle",
       "BuildPaletteOrder": 10,
-      "Prerequisites": "proc",
-      "Owner": "allies,soviet",
+      "Prerequisites": "proc, ~techlevel.infonly",
       "Hotkey": "e"
     },
     "Valued": {
@@ -1744,6 +1818,10 @@ units=(window.units||{}); units["playtest-20140405"]=[
       "FullHuskActor": "HARV.FullHusk",
       "FullnessThreshold": 50
     },
+    "Explodes": {
+      "Weapon": "OreExplosion",
+      "EmptyWeapon": "UnitExplodeSmall"
+    },
     "unitClass": "vehicles",
     "name": "HARV",
     "speed": 85
@@ -1752,9 +1830,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Vehicle",
     "Buildable": {
       "Queue": "Vehicle",
-      "BuildPaletteOrder": 110,
-      "Prerequisites": "fix",
-      "Owner": "allies,soviet",
+      "BuildPaletteOrder": 90,
+      "Prerequisites": "fix, ~techlevel.medium",
       "Hotkey": "b"
     },
     "CustomBuildTimeValue": {
@@ -1797,6 +1874,10 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "LeavesHusk": {
       "HuskActor": "MCV.Husk"
     },
+    "Explodes": {
+      "Weapon": "UnitExplodeSmall",
+      "EmptyWeapon": "UnitExplodeSmall"
+    },
     "unitClass": "vehicles",
     "name": "MCV",
     "speed": 85
@@ -1806,7 +1887,7 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Buildable": {
       "Queue": "Vehicle",
       "BuildPaletteOrder": 30,
-      "Owner": "allies",
+      "Prerequisites": "~vehicles.allies, ~techlevel.low",
       "Hotkey": "n"
     },
     "Valued": {
@@ -1847,6 +1928,10 @@ units=(window.units||{}); units["playtest-20140405"]=[
       "MaxWeight": 1,
       "PipCount": 1
     },
+    "Explodes": {
+      "Weapon": "UnitExplodeSmall",
+      "EmptyWeapon": "UnitExplodeSmall"
+    },
     "unitClass": "vehicles",
     "name": "JEEP",
     "speed": 170
@@ -1855,9 +1940,9 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Tank",
     "Buildable": {
       "Queue": "Vehicle",
-      "BuildPaletteOrder": 50,
-      "Owner": "soviet",
-      "Hotkey": "c"
+      "BuildPaletteOrder": 40,
+      "Hotkey": "c",
+      "Prerequisites": "~vehicles.soviet, ~techlevel.low"
     },
     "Valued": {
       "Cost": 850
@@ -1892,6 +1977,10 @@ units=(window.units||{}); units["playtest-20140405"]=[
       "MaxWeight": 5,
       "PipCount": 5
     },
+    "Explodes": {
+      "Weapon": "UnitExplodeSmall",
+      "EmptyWeapon": "UnitExplodeSmall"
+    },
     "unitClass": "vehicles",
     "name": "APC",
     "speed": 142
@@ -1900,9 +1989,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Tank",
     "Buildable": {
       "Queue": "Vehicle",
-      "BuildPaletteOrder": 30,
-      "Prerequisites": "fix",
-      "Owner": "soviet",
+      "BuildPaletteOrder": 110,
+      "Prerequisites": "fix, ~vehicles.soviet, ~techlevel.medium",
       "Hotkey": "i"
     },
     "Valued": {
@@ -1939,6 +2027,9 @@ units=(window.units||{}); units["playtest-20140405"]=[
       "CloakTypes": "Mine"
     },
     "RenderDetectionCircle": null,
+    "Explodes": {
+      "Weapon": "APMine"
+    },
     "unitClass": "vehicles",
     "name": "MNLY.AP",
     "speed": 128
@@ -1947,9 +2038,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Tank",
     "Buildable": {
       "Queue": "Vehicle",
-      "BuildPaletteOrder": 30,
-      "Prerequisites": "fix",
-      "Owner": "allies",
+      "BuildPaletteOrder": 100,
+      "Prerequisites": "fix, ~vehicles.allies, ~techlevel.medium",
       "Hotkey": "i"
     },
     "Valued": {
@@ -1986,6 +2076,9 @@ units=(window.units||{}); units["playtest-20140405"]=[
       "CloakTypes": "Mine"
     },
     "RenderDetectionCircle": null,
+    "Explodes": {
+      "Weapon": "ATMine"
+    },
     "unitClass": "vehicles",
     "name": "MNLY.AT",
     "speed": 128
@@ -1994,9 +2087,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Vehicle",
     "Buildable": {
       "Queue": "Vehicle",
-      "BuildPaletteOrder": 120,
-      "Prerequisites": "weap",
-      "Owner": "allies, soviet",
+      "BuildPaletteOrder": 20,
+      "Prerequisites": "weap, ~techlevel.low",
       "Hotkey": "u"
     },
     "Valued": {
@@ -2022,6 +2114,10 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "SupplyTruck": {
       "Payload": 500
     },
+    "Explodes": {
+      "Weapon": "UnitExplodeSmall",
+      "EmptyWeapon": "UnitExplodeSmall"
+    },
     "unitClass": "vehicles",
     "name": "TRUK",
     "speed": 128
@@ -2031,8 +2127,7 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Buildable": {
       "Queue": "Vehicle",
       "BuildPaletteOrder": 160,
-      "Prerequisites": "atek",
-      "Owner": "allies",
+      "Prerequisites": "atek, ~vehicles.allies, ~techlevel.unrestricted",
       "Hotkey": "y"
     },
     "Valued": {
@@ -2086,8 +2181,7 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Buildable": {
       "Queue": "Vehicle",
       "BuildPaletteOrder": 150,
-      "Prerequisites": "atek",
-      "Owner": "allies",
+      "Prerequisites": "atek, ~vehicles.allies, ~techlevel.unrestricted",
       "Hotkey": "k"
     },
     "Health": {
@@ -2115,7 +2209,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
       "Range": 15
     },
     "JamsMissiles": {
-      "Range": 4
+      "Range": 4,
+      "AlliedMissiles": false
     },
     "RenderJammerCircle": null,
     "DetectCloaked": {
@@ -2129,9 +2224,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Tank",
     "Buildable": {
       "Queue": "Vehicle",
-      "BuildPaletteOrder": 130,
-      "Prerequisites": "tsla,stek",
-      "Owner": "soviet",
+      "BuildPaletteOrder": 180,
+      "Prerequisites": "tsla, stek, ~vehicles.soviet, ~techlevel.unrestricted",
       "Hotkey": "t"
     },
     "Valued": {
@@ -2167,6 +2261,10 @@ units=(window.units||{}); units["playtest-20140405"]=[
       "Bounds": 282800
     },
     "AutoTarget": null,
+    "Explodes": {
+      "Weapon": "UnitExplodeSmall",
+      "EmptyWeapon": "UnitExplodeSmall"
+    },
     "unitClass": "vehicles",
     "name": "TTNK",
     "speed": 113
@@ -2175,9 +2273,9 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Vehicle",
     "Buildable": {
       "Queue": "Vehicle",
-      "BuildPaletteOrder": 30,
-      "Owner": "soviet",
-      "Hotkey": "k"
+      "BuildPaletteOrder": 60,
+      "Hotkey": "k",
+      "Prerequisites": "~vehicles.soviet, ~techlevel.low"
     },
     "Valued": {
       "Cost": 600
@@ -2229,9 +2327,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Vehicle",
     "Buildable": {
       "Queue": "Vehicle",
-      "BuildPaletteOrder": 140,
-      "Prerequisites": "stek",
-      "Owner": "soviet",
+      "BuildPaletteOrder": 170,
+      "Prerequisites": "stek, ~vehicles.soviet, ~techlevel.unrestricted",
       "Hotkey": "o"
     },
     "Valued": {
@@ -2271,9 +2368,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Vehicle",
     "Buildable": {
       "Queue": "Vehicle",
-      "BuildPaletteOrder": 140,
-      "Prerequisites": "atek,pdox",
-      "Owner": "allies",
+      "BuildPaletteOrder": 210,
+      "Prerequisites": "atek, pdox, ~vehicles.allies, ~techlevel.unrestricted",
       "Hotkey": "j"
     },
     "Valued": {
@@ -2313,6 +2409,10 @@ units=(window.units||{}); units["playtest-20140405"]=[
     },
     "AttackFrontal": null,
     "PortableChrono": null,
+    "Explodes": {
+      "Weapon": "UnitExplodeSmall",
+      "EmptyWeapon": "UnitExplodeSmall"
+    },
     "unitClass": "vehicles",
     "name": "CTNK",
     "speed": 113
@@ -2321,9 +2421,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Tank",
     "Buildable": {
       "Queue": "Vehicle",
-      "BuildPaletteOrder": 150,
-      "Prerequisites": "fix,stek",
-      "Owner": "soviet",
+      "BuildPaletteOrder": 200,
+      "Prerequisites": "fix, stek, ~vehicles.soviet, ~techlevel.unrestricted",
       "Hotkey": "q"
     },
     "Valued": {
@@ -2366,9 +2465,8 @@ units=(window.units||{}); units["playtest-20140405"]=[
     "Inherits": "^Vehicle",
     "Buildable": {
       "Queue": "Vehicle",
-      "BuildPaletteOrder": 170,
-      "Prerequisites": "atek",
-      "Owner": "allies",
+      "BuildPaletteOrder": 140,
+      "Prerequisites": "atek, ~vehicles.allies, ~techlevel.unrestricted",
       "Hotkey": "p"
     },
     "Valued": {
@@ -2419,6 +2517,10 @@ units=(window.units||{}); units["playtest-20140405"]=[
     },
     "DetectCloaked": {
       "Range": 6
+    },
+    "Explodes": {
+      "Weapon": "UnitExplodeSmall",
+      "EmptyWeapon": "UnitExplodeSmall"
     },
     "unitClass": "vehicles",
     "name": "STNK",
