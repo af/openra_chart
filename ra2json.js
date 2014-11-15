@@ -52,7 +52,7 @@ function massageData(units) {
             if (hasOldSpeedValues) unit.speed = unit.speed * 14;
 
             var isValidUnit = unit.Valued && unit.Valued.Cost && unit.Buildable;
-            var addUnit = isValidUnit && unit.Buildable.Prerequisites !== 'bio';
+            var addUnit = isValidUnit && !(/\bbio\b/.test(unit.Buildable.Prerequisites));
             if (addUnit) validUnits.push(unit);
         });
         return validUnits;
