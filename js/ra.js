@@ -1,8 +1,8 @@
 module.exports = {
-    buildings: ['barracks', 'ftur', 'weap', 'tsla', 'dome', 'hpad', 'afld',
+    buildings: ['barracks', 'kenn', 'ftur', 'weap', 'tsla', 'dome', 'hpad', 'afld',
                 'fix', 'spen', 'syrd', 'proc', 'weap', 'atek', 'stek', 'pdox'],
     buildings_allies: ['tent', 'hpad', 'syrd', 'atek'],
-    buildings_soviet: ['barr', 'fturr', 'tsla', 'afld', 'spen', 'stek'],
+    buildings_soviet: ['barr', 'kenn', 'fturr', 'tsla', 'afld', 'spen', 'stek'],
 
     // General functions to get a metric from the OpenRA-specific json data
     getCost: function(unit) { return (unit.Valued.Cost) },
