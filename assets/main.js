@@ -236,6 +236,7 @@ module.exports = {
         var lastPrereq = items[items.length - 1];
         if (!lastPrereq && prereqs.match(/\bvehicles\./)) return 'weap';
         else if (lastPrereq === 'tent' || lastPrereq === 'barr') return 'barracks';
+        else if (items.indexOf('stek') >= 0) return 'stek';     // For shock trooper
         else return (lastPrereq || '').trim();
     },
 

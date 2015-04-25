@@ -51,7 +51,7 @@ function massageData(units) {
             unit.speed = (unit.Plane || unit.Helicopter || unit.Mobile || {}).Speed;
             if (hasOldSpeedValues) unit.speed = unit.speed * 14;
 
-            var isValidUnit = unit.Valued && unit.Valued.Cost && unit.Buildable;
+            var isValidUnit = unit.Valued && unit.Valued.Cost && unit.Buildable && unit.Health;
             var addUnit = isValidUnit && !(/\bbio\b/.test(unit.Buildable.Prerequisites));
             if (addUnit) validUnits.push(unit);
         });
