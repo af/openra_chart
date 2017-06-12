@@ -11,7 +11,7 @@ module.exports = {
         var descr = (unit.Tooltip || {}).Description;
         return (descr || '').replace(/\\n/g, ' ');
     },
-    getHealth: function(unit) { return unit.Health.HP },
+    getHealth: unit => (unit.Health ? unit.Health.HP : 0),
     getSpeed: function(unit) { return unit.speed },
     getVision: function(unit) {
         var raw = (unit.RevealsShroud || {}).Range || 0;
