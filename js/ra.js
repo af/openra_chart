@@ -12,7 +12,12 @@ module.exports = {
         return (descr || '').replace(/\\n/g, ' ');
     },
     getHealth: unit => (unit.Health ? unit.Health.HP : 0),
-    getSpeed: function(unit) { return unit.speed },
+    getSpeed: unit => {
+        return (unit.speed ||
+                (unit.Aircraft && unit.Aircraft.Speed) ||
+                (unit.Mobile && unit.Mobile.Speed) ||
+                70)  // as of 2017 most infantry don't have a speed value in yaml. This default is a rough guess :)
+    },
     getVision: function(unit) {
         var raw = (unit.RevealsShroud || {}).Range || 0;
         return raw.toString().split('c')[0];    // Handle values of the form "5c0" (take the first number)
